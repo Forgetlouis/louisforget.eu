@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Section from '@components/common/Section.astro';
+import Card from '@components/common/Card.astro';
+import Badge from '@components/common/Badge.astro';
+import labData from '@data/lab.json';
+import { Github, ExternalLink } from 'lucide-react';
+
+const title = 'Lab - Projets d\'Expérimentation';
+const description = 'Découvrez mes projets d\'expérimentation et d\'apprentissage en cours';
+
+const statusStyles: Record<string, string> = {
+  'En cours': 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-200',
+  'Prototype': 'bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-200',
+  'Expérimentation': 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-200',
+};
+---
+
+<BaseLayout {title} {description}>
+  <Navigation />
+  <main class="pt-20">
+    <Section id="lab-hero" className="py-12">
+      <div class="max-w-3xl space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-bold">Lab</h1>
+        <p class="text-xl text-muted-foreground">
+          Mes projets d'expérimentation et d'apprentissage. Des projets qui me permettent 
+          d'explorer de nouvelles technologies et d'approfondir mes compétences.
+        </p>
+      </div>
+    </Section>
+
+    <Section className="py-0">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {labData.map((project, index) => (
+          <Card className="flex flex-col animate-fade-in" style={`animation-delay: ${index * 100}ms`}>
+            <!-- Header -->
+            <div class="pb-4 border-b border-border">
+              <div class="flex items-start justify-between gap-3 mb-3">
+                <h3 class="text-xl font-semibold leading-tight">{project.title}</h3>
+                <span class={`whitespace-nowrap px-3 py-1 rounded-full text-xs font-medium ${statusStyles[project.status] || 'bg-muted'}`}>
+                  {project.status}
+                </span>
+              </div>
+              <p class="text-sm text-muted-foreground leading-relaxed">{project.description}</p>
+            </div>
+
+            <!-- Technologies -->
+            <div class="py-4 border-b border-border">
+              <div class="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Technologies</div>
+              <div class="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <Badge variant="outline" size="sm">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="py-4 border-b border-border">
+              <div class="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Progression</div>
+              <div class="w-full h-2 bg-muted rounded-full overflow-hidden">
+                <div 
+                  class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-500"
+                  style={`width: ${project.progress}%`}
+                ></div>
+              </div>
+              <div class="text-xs text-muted-foreground mt-2">{project.progress}% complet</div>
+            </div>
+
+            <!-- Links -->
+            <div class="pt-4 mt-auto flex gap-3">
+              {project.github && (
+                <a 
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                >
+                  <Github size={16} class="group-hover:scale-110 transition-transform" />
+                  Code
+                </a>
+              )}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Section>
+
+    <!-- More Info Section -->
+    <Section className="py-12">
+      <div class="bg-muted/50 border border-border rounded-lg p-8 space-y-4">
+        <h3 class="text-lg font-semibold">À propos de cette section</h3>
+        <p class="text-muted-foreground">
+          Le Lab est un espace d'expérimentation. Certains projets sont en cours d'évolution, 
+          d'autres sont des prototypes ou des explorations. L'objectif est d'apprendre continuellement 
+          et de partager mon processus d'apprentissage.
+        </p>
+        <p class="text-muted-foreground">
+          Consultez les dépôts GitHub pour plus de détails, code source et documentation.
+        </p>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+    opacity: 0;
+  }
+</style>

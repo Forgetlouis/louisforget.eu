@@ -1,0 +1,30 @@
+[
+  {
+    "id": "hiking",
+    "emoji": "🥾",
+    "title": "Randonnée",
+    "description": "Longues randonnées, bivouac, itinérance. J'aime l'effort, la préparation minutieuse et l'apprentissage à gérer l'imprévu en montagne.",
+    "highlights": ["Longues distances", "Bivouac", "Itinérance", "Goût de l'effort", "Préparation", "Gestion de l'imprévu"]
+  },
+  {
+    "id": "cycling",
+    "emoji": "🚴",
+    "title": "Vélo",
+    "description": "Route, gravel, longues distances. Le cyclisme m'apprend l'endurance, la patience et le plaisir de l'exploration.",
+    "highlights": ["Route", "Gravel", "Longues distances", "Exploration", "Endurance", "Communauté"]
+  },
+  {
+    "id": "diving",
+    "emoji": "🤿",
+    "title": "Plongée",
+    "description": "Découverte des fonds marins, exploration, sérénité. La plongée enseigne la rigueur, la sécurité et le respect de l'environnement.",
+    "highlights": ["Découverte", "Préparation", "Calme", "Sécurité", "Respect de l'environnement", "Communauté"]
+  },
+  {
+    "id": "engineering",
+    "emoji": "💻",
+    "title": "Ingénieur informatique",
+    "description": "La technologie me passionne pour son potentiel à résoudre des problèmes complexes. Cloud, automatisation, architecture. Apprentissage permanent.",
+    "highlights": ["Cloud", "Automatisation", "Architecture", "Résolution de problèmes", "Apprentissage permanent", "Création"]
+  }
+]

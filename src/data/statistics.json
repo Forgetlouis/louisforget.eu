@@ -1,0 +1,44 @@
+[
+  {
+    "id": "experience",
+    "icon": "Briefcase",
+    "value": "7",
+    "label": "années d'expérience",
+    "suffix": "+"
+  },
+  {
+    "id": "projects",
+    "icon": "Code",
+    "value": "40",
+    "label": "projets réalisés",
+    "suffix": "+"
+  },
+  {
+    "id": "technologies",
+    "icon": "Zap",
+    "value": "25",
+    "label": "technologies maîtrisées",
+    "suffix": "+"
+  },
+  {
+    "id": "certifications",
+    "icon": "Award",
+    "value": "5",
+    "label": "certifications",
+    "suffix": ""
+  },
+  {
+    "id": "cycling",
+    "icon": "Bike",
+    "value": "3400",
+    "label": "km à vélo",
+    "suffix": ""
+  },
+  {
+    "id": "hiking",
+    "icon": "Mountain",
+    "value": "1200",
+    "label": "km de randonnée",
+    "suffix": ""
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "agentic-ai",
+    "title": "Agentic AI",
+    "description": "Agents autonomes avec reasoning et tool use"
+  },
+  {
+    "id": "llm-engineering",
+    "title": "LLM Engineering",
+    "description": "Fine-tuning, RAG, prompt engineering avancé"
+  },
+  {
+    "id": "platform-engineering",
+    "title": "Platform Engineering",
+    "description": "Plateformes de développement d'équipe"
+  },
+  {
+    "id": "infrastructure-as-code",
+    "title": "Infrastructure as Code",
+    "description": "Terraform patterns et best practices"
+  },
+  {
+    "id": "kubernetes",
+    "title": "Kubernetes",
+    "description": "Multi-cluster, operators, GitOps"
+  },
+  {
+    "id": "gitops",
+    "title": "GitOps",
+    "description": "ArgoCD, Flux et pratiques associées"
+  },
+  {
+    "id": "observability",
+    "title": "Observabilité",
+    "description": "O11y, telemetry, cost monitoring"
+  },
+  {
+    "id": "internal-developer-platforms",
+    "title": "Internal Developer Platforms",
+    "description": "Developer Experience et productivité"
+  },
+  {
+    "id": "python-automation",
+    "title": "Python Automation",
+    "description": "Scripts et frameworks d'automation"
+  },
+  {
+    "id": "gcp",
+    "title": "Google Cloud Platform",
+    "description": "Services GCP avancés et optimisation"
+  },
+  {
+    "id": "selfhosting",
+    "title": "Self-Hosting",
+    "description": "Infrastructure personnelle et privacy"
+  },
+  {
+    "id": "mcp-servers",
+    "title": "MCP Servers",
+    "description": "Model Context Protocol et intégrations"
+  }
+]

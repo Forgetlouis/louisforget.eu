@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Section from '@components/common/Section.astro';
+import ProjectSection from '@components/projects/ProjectSection.astro';
+import projectsData from '@data/projects.json';
+
+const title = 'Projets & Expérience - Louis Forget';
+const description = 'Mes projets majeurs en Infrastructure as Code, Cloud, IA et Automation';
+---
+
+<BaseLayout {title} {description}>
+  <Navigation />
+  <main class="pt-20">
+    <Section id="projects-hero" className="py-12">
+      <div class="max-w-3xl space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-bold">Projets & Expérience</h1>
+        <p class="text-xl text-muted-foreground">
+          Une sélection de projets qui m'ont permis de progresser en infrastructure, 
+          automatisation et engineering.
+        </p>
+      </div>
+    </Section>
+
+    <Section className="py-0">
+      <div class="space-y-12">
+        <!-- AI & Agentic Section -->
+        <ProjectSection 
+          title="🤖 IA & Agents"
+          description="Projets explorant les assistants IA, RAG, agents autonomes et LLM engineering"
+          projects={projectsData.ai}
+        />
+
+        <!-- Infrastructure On-Prem -->
+        <ProjectSection 
+          title="🏗️ Infrastructure On-Premise"
+          description="Automatisation et gestion de l'infrastructure privée avec Terraform et Ansible"
+          projects={projectsData.infrastructure_on_prem}
+        />
+
+        <!-- Infrastructure GCP -->
+        <ProjectSection 
+          title="☁️ Google Cloud Platform"
+          description="Architecture cloud moderne avec Terraform, Cloud Run et services GCP avancés"
+          projects={projectsData.infrastructure_gcp}
+        />
+
+        <!-- Automation -->
+        <ProjectSection 
+          title="⚙️ Automatisation"
+          description="Scripts, CI/CD pipelines et provisioning avec Python et GitHub Actions"
+          projects={projectsData.automation}
+        />
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

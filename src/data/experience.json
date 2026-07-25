@@ -1,0 +1,64 @@
+[
+  {
+    "id": "exp-1",
+    "type": "experience",
+    "company": "TechCorp Cloud",
+    "position": "Senior Platform Engineer",
+    "startDate": "2022-01",
+    "endDate": null,
+    "description": "Construction et évolution de la plateforme de déploiement interne pour 200+ ingénieurs.",
+    "highlights": [
+      "Automatisation complète de l'infrastructure sur GCP avec IaC (Terraform)",
+      "Réduction de 70% du MTTR via observabilité avancée",
+      "Migration de 50+ microservices vers architecture cloud-native"
+    ],
+    "technologies": ["GCP", "Terraform", "Kubernetes", "Python", "Observabilité"]
+  },
+  {
+    "id": "exp-2",
+    "type": "experience",
+    "company": "InfraOps Solutions",
+    "position": "Cloud Engineer / DevOps Lead",
+    "startDate": "2019-06",
+    "endDate": "2021-12",
+    "description": "Transformation digitale d'infrastructure on-premise vers cloud.",
+    "highlights": [
+      "Design et implémentation d'une architecture hybrid cloud",
+      "Automation de 95% des tâches opérationnelles",
+      "Mise en place de monitoring et alerting multi-cloud"
+    ],
+    "technologies": ["AWS", "Terraform", "Ansible", "Docker", "CI/CD"]
+  },
+  {
+    "id": "edu-1",
+    "type": "education",
+    "title": "Master Informatique",
+    "institution": "Université de Paris",
+    "year": "2019",
+    "description": "Spécialisation Cloud Architecture et Distributed Systems"
+  },
+  {
+    "id": "edu-2",
+    "type": "education",
+    "title": "Licence Informatique",
+    "institution": "Université de Lyon",
+    "year": "2017",
+    "description": "Fondamentaux informatique et programmation"
+  },
+  {
+    "id": "cert-1",
+    "type": "certification",
+    "title": "Google Cloud Professional Cloud Architect",
+    "issuer": "Google Cloud",
+    "year": "2023",
+    "credentialId": "GCP-PCA-123456"
+  },
+  {
+    "id": "cert-2",
+    "type": "certification",
+    "title": "Certified Kubernetes Administrator (CKA)",
+    "issuer": "CNCF",
+    "year": "2022",
+    "credentialId": "CNCF-CKA-789012"
+  }
+]

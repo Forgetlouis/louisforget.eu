@@ -1,0 +1,13 @@
+---
+interface Props {
+  className?: string;
+  children: any;
+  hover?: boolean;
+}
+
+const { className = '', hover = true, children } = Astro.props;
+---
+
+<div class={`rounded-lg border border-border bg-background p-6 transition-all ${hover ? 'hover:border-muted-foreground hover:shadow-lg' : ''} ${className}`}>
+  {children}
+</div>

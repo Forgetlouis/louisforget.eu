@@ -1,0 +1,80 @@
+{
+  "ai": [
+    {
+      "id": "git-code-agent",
+      "title": "Agent IA d'analyse de dépôts Git",
+      "description": "Agent autonome utilisant Claude pour analyser automatiquement les dépôts Git, générer des insights et recommandations architecturales.",
+      "context": "Besoin d'automatiser l'analyse de qualité de code et d'architecture à grande échelle.",
+      "problem": "Les audits de code manuels sont coûteux et peu scalables.",
+      "solution": "Développé un agent IA avec MCP qui scanne les repos, analyse le code et génère des rapports détaillés.",
+      "technologies": ["Claude API", "MCP", "Python", "Git", "LLM"],
+      "results": "Réduction de 80% du temps d'audit de code",
+      "learnings": "Les LLMs sont excellents pour l'analyse de patterns, nécessite une bonne stratégie de prompt engineering",
+      "github": "https://github.com/louisforget/git-code-agent",
+      "demo": null,
+      "status": "En production"
+    },
+    {
+      "id": "rag-documentation",
+      "title": "Système RAG pour documentation interne",
+      "description": "Pipeline RAG (Retrieval Augmented Generation) indexant la documentation interne pour répondre automatiquement aux questions.",
+      "context": "Équipe traversant plusieurs projets avec documentation éparpillée.",
+      "problem": "Les ingénieurs perdent du temps à chercher dans la documentation. Besoin d'une source unique de vérité.",
+      "solution": "Implémenté un système RAG avec vectorisation et recherche sémantique.",
+      "technologies": ["LangChain", "OpenAI", "Pinecone", "FastAPI", "Python"],
+      "results": "90% des questions répondues automatiquement",
+      "learnings": "La qualité des embeddings et du chunking est critique. L'indexation doit être à jour en continu.",
+      "github": "https://github.com/louisforget/rag-docs",
+      "demo": "https://docs-ai.example.com",
+      "status": "En production"
+    }
+  ],
+  "infrastructure_on_prem": [
+    {
+      "id": "terraform-vmware",
+      "title": "Infrastructure VMware entièrement automatisée",
+      "description": "Terraform modules pour provisionner une infrastructure VMware complète avec networking, storage et compute.",
+      "context": "Infrastructure on-premise complexe à gérer manuellement.",
+      "problem": "Processus de provisioning manuels et peu fiables créant des dérives de configuration.",
+      "solution": "Modules Terraform réutilisables avec gestion d'état centralisée et CI/CD integré.",
+      "technologies": ["Terraform", "VMware vSphere", "Linux", "Ansible", "Git"],
+      "results": "Configuration d'une infrastructure complète en 15 minutes au lieu de 2 jours",
+      "learnings": "La gestion d'état est critique. Terraform state doit être sécurisé et versionnec.",
+      "github": "https://github.com/louisforget/terraform-vmware",
+      "demo": null,
+      "status": "En production"
+    }
+  ],
+  "infrastructure_gcp": [
+    {
+      "id": "gcp-platform",
+      "title": "Plateforme Google Cloud complète en Terraform",
+      "description": "Architecture complète GCP avec Cloud Run, BigQuery, Cloud Functions et observabilité centralisée.",
+      "context": "Migration massive vers le cloud avec besoin d'une plateforme standardisée.",
+      "problem": "Absence de standards IaC. Configurations différentes selon les projets.",
+      "solution": "Terraform modules couvrant l'ensemble du stack GCP avec secrets management et monitoring.",
+      "technologies": ["Terraform", "Google Cloud Platform", "Cloud Run", "BigQuery", "Dataform", "Cloud Build"],
+      "results": "90% reduction en configuration drift. Déploiement 5x plus rapide.",
+      "learnings": "IAM est complexe. Faut bien planifier dès le départ. Organisation workflows vs projects.",
+      "github": "https://github.com/louisforget/gcp-infrastructure",
+      "demo": null,
+      "status": "En production"
+    }
+  ],
+  "automation": [
+    {
+      "id": "github-actions-platform",
+      "title": "Plateforme CI/CD centralisée avec GitHub Actions",
+      "description": "Workflows réutilisables et templates pour standardiser le déploiement de 50+ microservices.",
+      "context": "Chaque équipe avait ses propres workflows, créant de l'inconsistance et des risques.",
+      "problem": "Pas de standardisation CI/CD. Chaque équipe réinventait la roue.",
+      "solution": "Composite actions réutilisables, templates de workflows, et centralisation des secrets.",
+      "technologies": ["GitHub Actions", "Python", "Docker", "YAML", "Shell"],
+      "results": "99.2% success rate. Déploiement 3x plus fiable.",
+      "learnings": "Écrire des workflowa complexes requiert une bonne structuration. Réutilisabilité dès le départ.",
+      "github": "https://github.com/louisforget/github-actions-platform",
+      "demo": null,
+      "status": "En production"
+    }
+  ]
+}

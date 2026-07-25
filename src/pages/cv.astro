@@ -1,0 +1,132 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Section from '@components/common/Section.astro';
+import Timeline from '@components/timeline/Timeline.astro';
+import Badge from '@components/common/Badge.astro';
+import experienceData from '@data/experience.json';
+import skillsData from '@data/skills.json';
+
+const title = 'CV & Timeline - Louis Forget';
+const description = 'Expérience professionnelle, éducation, certifications et compétences';
+
+// Separate data by type
+const experiences = experienceData.filter((item) => item.type === 'experience');
+const education = experienceData.filter((item) => item.type === 'education');
+const certifications = experienceData.filter((item) => item.type === 'certification');
+---
+
+<BaseLayout {title} {description}>
+  <Navigation />
+  <main class="pt-20">
+    <Section id="cv-hero" className="py-12">
+      <div class="max-w-3xl space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-bold">Parcours & Compétences</h1>
+        <p class="text-xl text-muted-foreground">
+          Une vue d'ensemble de mon expérience, mes études et mes certifications.
+        </p>
+      </div>
+    </Section>
+
+    <!-- Experience Section -->
+    <Section id="experience" title="Expérience Professionnelle">
+      <Timeline items={experiences} type="experience" />
+    </Section>
+
+    <!-- Education Section -->
+    <Section id="education" title="Formation">
+      <Timeline items={education} type="education" />
+    </Section>
+
+    <!-- Certifications Section -->
+    <Section id="certifications" title="Certifications">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {certifications.map((cert) => (
+          <div class="p-6 border border-border rounded-lg hover:border-muted-foreground hover:shadow-lg transition-all bg-gradient-to-br from-blue-50/50 dark:from-blue-950/20 to-transparent">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-lg">{cert.title}</h3>
+                <p class="text-sm text-muted-foreground mt-1">{cert.issuer}</p>
+                {cert.credentialId && (
+                  <p class="text-xs text-muted-foreground mt-2 font-mono">{cert.credentialId}</p>
+                )}
+              </div>
+              <span class="text-sm font-medium text-blue-600 dark:text-blue-400 whitespace-nowrap">{cert.year}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Hard Skills Section -->
+    <Section id="skills" title="Compétences Techniques">
+      <div class="space-y-8">
+        {Object.entries(skillsData).map(([category, skills]) => {
+          if (category === 'softSkills') return null;
+          return (
+            <div key={category}>
+              <h3 class="text-lg font-semibold mb-4 capitalize">
+                {category === 'devops' ? 'DevOps & CI/CD' : 
+                 category === 'programming' ? 'Programmation' :
+                 category === 'infrastructure' ? 'Infrastructure' :
+                 category === 'containers' ? 'Containers & Orchestration' :
+                 category === 'architecture' ? 'Architecture' :
+                 category === 'observability' ? 'Observabilité' :
+                 category === 'cloud' ? 'Cloud Platforms' :
+                 category.replace(/([A-Z])/g, ' $1').trim()}
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {Array.isArray(skills) && skills.map((skill: any) => {
+                  const skillName = typeof skill === 'string' ? skill : skill.name;
+                  const proficiency = typeof skill === 'string' ? 'advanced' : skill.proficiency;
+                  
+                  const variantMap: Record<string, string> = {
+                    'expert': 'default',
+                    'advanced': 'secondary',
+                    'intermediate': 'outline',
+                  };
+                  
+                  return (
+                    <Badge 
+                      variant={variantMap[proficiency] as any || 'outline'}
+                      size="md"
+                    >
+                      {skillName}
+                    </Badge>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+
+    <!-- Soft Skills Section -->
+    <Section id="soft-skills" title="Compétences Transversales">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {(skillsData.softSkills as string[]).map((skill) => (
+          <div class="p-4 border border-border rounded-lg bg-muted/30">
+            <p class="font-medium">{skill}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <!-- Languages Section -->
+    <Section id="languages" title="Langues">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-6 border border-border rounded-lg">
+          <h3 class="font-semibold mb-2">Français</h3>
+          <p class="text-sm text-muted-foreground">Langue maternelle</p>
+        </div>
+        <div class="p-6 border border-border rounded-lg">
+          <h3 class="font-semibold mb-2">Anglais</h3>
+          <p class="text-sm text-muted-foreground">B2 - Courant professionnel</p>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

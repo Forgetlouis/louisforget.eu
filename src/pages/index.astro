@@ -1,0 +1,27 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Hero from '@components/home/Hero.astro';
+import AboutMe from '@components/home/AboutMe.astro';
+import EngineeringPhilosophy from '@components/home/EngineeringPhilosophy.astro';
+import Passions from '@components/home/Passions.astro';
+import Statistics from '@components/home/Statistics.astro';
+import CurrentExplorations from '@components/home/CurrentExplorations.astro';
+
+const title = 'Louis Forget - Cloud Engineer & Platform Engineer';
+const description = 'Portfolio professionnel de Louis Forget. Cloud Engineer, Platform Engineer et SRE spécialisé en Infrastructure as Code et DevOps.';
+---
+
+<BaseLayout {title} {description}>
+  <Navigation />
+  <main>
+    <Hero />
+    <AboutMe />
+    <EngineeringPhilosophy />
+    <Passions />
+    <Statistics />
+    <CurrentExplorations />
+  </main>
+  <Footer />
+</BaseLayout>

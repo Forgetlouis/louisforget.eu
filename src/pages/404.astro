@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Button from '@components/common/Button.astro';
+
+const title = '404 - Page non trouvée';
+---
+
+<BaseLayout {title}>
+  <Navigation />
+  <main class="pt-20 min-h-screen flex items-center">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center py-20">
+      <div class="space-y-6">
+        <div class="space-y-2">
+          <h1 class="text-6xl font-bold tracking-tight">404</h1>
+          <p class="text-2xl font-semibold">Page non trouvée</p>
+        </div>
+        
+        <p class="text-lg text-muted-foreground max-w-lg mx-auto">
+          Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+        </p>
+        
+        <div class="pt-4">
+          <Button href="/" variant="primary" size="lg">
+            Retour à l'accueil
+          </Button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

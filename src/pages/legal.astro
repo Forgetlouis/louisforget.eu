@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/layout/Navigation.astro';
+import Footer from '@components/layout/Footer.astro';
+import Section from '@components/common/Section.astro';
+
+const title = 'Mentions légales';
+---
+
+<BaseLayout {title}>
+  <Navigation />
+  <main class="pt-20">
+    <Section id="legal" title="Mentions légales">
+      <div class="max-w-3xl space-y-8 text-muted-foreground">
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Informations du site</h2>
+          <p><strong>Responsable:</strong> Louis Forget</p>
+          <p><strong>Email:</strong> <a href="mailto:louis@example.com" class="text-blue-600 dark:text-blue-400 hover:underline">louis@example.com</a></p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Propriété intellectuelle</h2>
+          <p>
+            Sauf indication contraire, tous les contenus, designs et code source de ce site sont 
+            la propriété exclusive de Louis Forget et protégés par les lois sur les droits d'auteurs.
+          </p>
+          <p>
+            Les articles et projets publiés sont disponibles sous les licences spécifiées pour chaque projet.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Hébergement</h2>
+          <p>
+            <strong>Plateforme:</strong> GitHub Pages<br />
+            <strong>Hébergeur:</strong> GitHub, Inc.<br />
+            <strong>Juridiction:</strong> États-Unis
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Données personnelles</h2>
+          <p>
+            Ce site n'utilise PAS de cookies de tracking et ne collecte aucune donnée personnelle.
+          </p>
+          <p>
+            Nous utilisons <strong>Plausible Analytics</strong> pour les statistiques d'utilisation, 
+            qui respecte votre vie privée (cf. <a href="https://plausible.io/privacy" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Politique de Plausible</a>).
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Liens externes</h2>
+          <p>
+            Ce site contient des liens externos. Louis Forget ne peut être tenu responsable 
+            du contenu de ces sites externes.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Limitation de responsabilité</h2>
+          <p>
+            Les informations fournies sur ce site sont données à titre informatif et ne constituent 
+            pas des conseils professionnels.
+          </p>
+        </div>
+
+        <div class="space-y-3">
+          <h2 class="text-2xl font-semibold text-foreground">Modifications</h2>
+          <p>
+            Louis Forget se réserve le droit de modifier ces mentions légales à tout moment.
+            Les modifications entrent en vigueur dès leur publication.
+          </p>
+          <p class="text-sm">Dernière mise à jour: Juillet 2024</p>
+        </div>
+      </div>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

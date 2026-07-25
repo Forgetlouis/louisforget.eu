@@ -1,0 +1,30 @@
+---
+import Section from '@components/common/Section.astro';
+import Badge from '@components/common/Badge.astro';
+import explorationsData from '@data/explorations.json';
+---
+
+<Section 
+  id="explorations" 
+  title="Ce qui m'intéresse actuellement"
+  subtitle="Sujets en cours d'exploration"
+>
+  <div class="space-y-4">
+    <p class="text-lg text-muted-foreground max-w-3xl">
+      Je consacre régulièrement du temps à l'apprentissage et l'expérimentation. 
+      Voici les domaines sur lesquels je travaille actuellement pour renforcer mes compétences.
+    </p>
+    
+    <div class="flex flex-wrap gap-3 pt-6">
+      {explorationsData.map((item) => (
+        <Badge variant="secondary" size="md">
+          {item.title}
+        </Badge>
+      ))}
+    </div>
+
+    <p class="text-sm text-muted-foreground pt-6">
+      → Consultez la page <a href="/lab" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Lab</a> pour découvrir mes projets d'expérimentation actuels
+    </p>
+  </div>
+</Section>

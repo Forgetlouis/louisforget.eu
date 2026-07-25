@@ -1,0 +1,91 @@
+---
+import { Calendar, MapPin } from 'lucide-react';
+import Badge from '@components/common/Badge.astro';
+
+interface Props {
+  company?: string;
+  institution?: string;
+  position?: string;
+  title?: string;
+  startDate?: string;
+  endDate?: string;
+  year?: string;
+  description: string;
+  highlights?: string[];
+  technologies?: string[];
+}
+
+const { 
+  company,
+  institution,
+  position, 
+  title,
+  startDate,
+  endDate,
+  year,
+  description,
+  highlights,
+  technologies
+} = Astro.props;
+
+const formatDate = (date: string | undefined) => {
+  if (!date) return '';
+  const [year, month] = date.split('-');
+  const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
+  return `${monthNames[parseInt(month) - 1]} ${year}`;
+};
+---
+
+<div class="relative pl-8 pb-12">
+  <!-- Timeline dot -->
+  <div class="absolute -left-4 top-1 w-8 h-8 rounded-full bg-border border-4 border-background dark:border-background z-10"></div>
+  
+  <!-- Content -->
+  <div class="space-y-3">
+    <!-- Header -->
+    <div>
+      {company && <h3 class="text-lg font-semibold">{company}</h3>}
+      {institution && <h3 class="text-lg font-semibold">{institution}</h3>}
+      {position && <p class="text-blue-600 dark:text-blue-400 font-medium">{position}</p>}
+      {title && <p class="text-blue-600 dark:text-blue-400 font-medium">{title}</p>}
+    </div>
+
+    <!-- Dates -->
+    <div class="flex items-center gap-4 text-sm text-muted-foreground">
+      {(startDate || year) && (
+        <div class="flex items-center gap-1">
+          <Calendar size={16} />
+          <span>
+            {year ? year : `${formatDate(startDate)} – ${endDate ? formatDate(endDate) : 'Aujourd\'hui'}`}
+          </span>
+        </div>
+      )}
+    </div>
+
+    <!-- Description -->
+    <p class="text-muted-foreground leading-relaxed">{description}</p>
+
+    <!-- Highlights -->
+    {highlights && highlights.length > 0 && (
+      <ul class="space-y-2">
+        {highlights.map((highlight) => (
+          <li class="flex gap-2 text-sm">
+            <span class="text-blue-600 dark:text-blue-400 font-bold">•</span>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    <!-- Technologies -->
+    {technologies && technologies.length > 0 && (
+      <div class="flex flex-wrap gap-2 pt-2">
+        {technologies.map((tech) => (
+          <Badge variant="outline" size="sm">
+            {tech}
+          </Badge>
+        ))}
+      </div>
+    )}
+  </div>
+</div>

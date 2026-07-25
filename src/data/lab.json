@@ -1,0 +1,56 @@
+[
+  {
+    "id": "git-analyzer",
+    "title": "Analyseur Git avec IA",
+    "status": "En cours",
+    "description": "Agent IA autonome qui analyse les dépôts Git, détecte les patterns architecturaux et génère des insights.",
+    "technologies": ["Claude API", "MCP", "Python", "LLM"],
+    "github": "https://github.com/louisforget/git-analyzer",
+    "progress": 65
+  },
+  {
+    "id": "gcp-homelab",
+    "title": "Plateforme GCP Home Lab",
+    "status": "Prototype",
+    "description": "Infrastructure complète sur GCP avec Terraform. Multi-région, failover automatique, monitoring complet.",
+    "technologies": ["GCP", "Terraform", "Kubernetes", "Observabilité"],
+    "github": "https://github.com/louisforget/gcp-homelab",
+    "progress": 45
+  },
+  {
+    "id": "k8s-homelab",
+    "title": "Kubernetes Home Lab",
+    "status": "En cours",
+    "description": "Cluster Kubernetes multi-node pour expérimenter GitOps, service mesh, et applications distribuées.",
+    "technologies": ["Kubernetes", "ArgoCD", "Istio", "Prometheus"],
+    "github": "https://github.com/louisforget/k8s-homelab",
+    "progress": 55
+  },
+  {
+    "id": "observability-dashboard",
+    "title": "Dashboard d'Observabilité Universal",
+    "status": "Expérimentation",
+    "description": "Dashboard centralisé agrégrant métriques, logs et traces de multiples sources cloud.",
+    "technologies": ["Grafana", "OpenTelemetry", "TimescaleDB", "Loki"],
+    "github": "https://github.com/louisforget/observability-dashboard",
+    "progress": 30
+  },
+  {
+    "id": "mcp-server",
+    "title": "MCP Server personnalisé",
+    "status": "Prototype",
+    "description": "Serveur MCP pour intégrer des outils cloud personnalisés dans Claude et d'autres LLMs.",
+    "technologies": ["MCP", "Python", "TypeScript", "Claude API"],
+    "github": "https://github.com/louisforget/mcp-server",
+    "progress": 40
+  },
+  {
+    "id": "rag-system",
+    "title": "Système RAG Avancé",
+    "status": "En cours",
+    "description": "RAG (Retrieval Augmented Generation) avec chunking intelligent, multi-modal et cache persistant.",
+    "technologies": ["LangChain", "OpenAI", "Postgres Vector", "FastAPI"],
+    "github": "https://github.com/louisforget/rag-system",
+    "progress": 70
+  }
+]

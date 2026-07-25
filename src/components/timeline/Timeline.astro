@@ -1,0 +1,22 @@
+---
+import TimelineItem from '@components/timeline/TimelineItem.astro';
+
+interface Props {
+  items: any[];
+  type: 'experience' | 'education' | 'certification';
+}
+
+const { items, type } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Timeline line -->
+  <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-border via-border to-transparent"></div>
+
+  <!-- Items -->
+  <div class="space-y-2">
+    {items.map((item) => (
+      <TimelineItem {...item} />
+    ))}
+  </div>
+</div>

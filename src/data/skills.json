@@ -1,0 +1,48 @@
+{
+  "cloud": [
+    { "name": "Google Cloud Platform", "proficiency": "expert" },
+    { "name": "AWS", "proficiency": "advanced" },
+    { "name": "Azure", "proficiency": "intermediate" }
+  ],
+  "infrastructure": [
+    { "name": "Terraform", "proficiency": "expert" },
+    { "name": "Ansible", "proficiency": "advanced" },
+    { "name": "CloudFormation", "proficiency": "intermediate" }
+  ],
+  "containers": [
+    { "name": "Kubernetes", "proficiency": "expert" },
+    { "name": "Docker", "proficiency": "expert" },
+    { "name": "Helm", "proficiency": "advanced" }
+  ],
+  "devops": [
+    { "name": "CI/CD Pipelines", "proficiency": "expert" },
+    { "name": "GitHub Actions", "proficiency": "expert" },
+    { "name": "ArgoCD", "proficiency": "advanced" },
+    { "name": "CloudBuild", "proficiency": "advanced" }
+  ],
+  "programming": [
+    { "name": "Python", "proficiency": "expert" },
+    { "name": "Go", "proficiency": "intermediate" },
+    { "name": "Shell/Bash", "proficiency": "expert" },
+    { "name": "TypeScript", "proficiency": "intermediate" }
+  ],
+  "observability": [
+    { "name": "Prometheus", "proficiency": "advanced" },
+    { "name": "Grafana", "proficiency": "advanced" },
+    { "name": "Datadog", "proficiency": "intermediate" },
+    { "name": "OpenTelemetry", "proficiency": "advanced" }
+  ],
+  "architecture": [
+    { "name": "Microservices", "proficiency": "expert" },
+    { "name": "Serverless", "proficiency": "advanced" },
+    { "name": "Event-Driven", "proficiency": "advanced" }
+  ],
+  "softSkills": [
+    "Résolution de problèmes complexes",
+    "Communication technique claire",
+    "Documentation minutieuse",
+    "Travail en équipe distributed",
+    "Autonomie",
+    "Curiosité"
+  ]
+}

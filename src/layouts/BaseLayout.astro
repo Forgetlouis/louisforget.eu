@@ -1,0 +1,117 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description || "Portfolio professionnel de Louis Forget - Cloud Engineer, Platform Engineer, SRE"} />
+    
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Analytics -->
+    <script defer data-domain="louisforget.eu" src="https://plausible.io/js/script.js"></script>
+  </head>
+  <body class="bg-background text-foreground">
+    <slot />
+    <script>
+      // Dark mode detection and theme initialization
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Scroll to top button
+      window.addEventListener('scroll', () => {
+        const scrollToTop = document.getElementById('scroll-to-top');
+        if (scrollToTop) {
+          scrollToTop.style.display = window.scrollY > 400 ? 'block' : 'none';
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --color-foreground: 0 0% 3%;
+    --color-background: 0 0% 100%;
+    --color-muted: 0 0% 89%;
+    --color-muted-foreground: 0 0% 45%;
+    --color-border: 0 0% 89%;
+  }
+
+  html.dark {
+    --color-foreground: 0 0% 98%;
+    --color-background: 0 0% 3%;
+    --color-muted: 0 0% 14%;
+    --color-muted-foreground: 0 0% 63%;
+    --color-border: 0 0% 14%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @supports (scrollbar-gutter: stable) {
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+</style>

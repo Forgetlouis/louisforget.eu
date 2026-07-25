@@ -1,0 +1,84 @@
+---
+import Button from '@components/common/Button.astro';
+import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+---
+
+<section class="relative min-h-screen pt-24 px-4 sm:px-6 lg:px-8 flex items-center overflow-hidden">
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-b from-blue-500/10 via-cyan-500/5 to-transparent rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="mx-auto max-w-6xl w-full">
+    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-150px)]">
+      <!-- Left Content -->
+      <div class="space-y-8 animate-fade-in">
+        <!-- Greeting -->
+        <div class="space-y-2">
+          <p class="text-lg font-medium text-blue-600 dark:text-blue-400">Bienvenue 👋</p>
+          <h1 class="text-5xl sm:text-6xl font-bold tracking-tight">
+            Louis Forget
+          </h1>
+          <p class="text-2xl text-muted-foreground font-light">
+            Cloud Engineer • Platform Engineer • SRE
+          </p>
+        </div>
+
+        <!-- Tagline -->
+        <p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
+          Je construis des infrastructures cloud robustes, automatisées et observables. Passionné par l'infrastructure as code, les plateformes et la culture DevOps.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <Button href="/projects" variant="primary" size="lg">
+            Voir mes projets
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M7 7l10 10L7 7" />
+            </svg>
+          </Button>
+          <Button href="/cv.pdf" variant="outline" size="lg" external>
+            <FileText size={18} />
+            CV
+          </Button>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex gap-4 pt-8 border-t border-border">
+          <a href="https://github.com/louisforget" target="_blank" rel="noopener noreferrer" class="p-3 bg-muted hover:bg-muted/80 rounded-lg transition-colors" aria-label="GitHub">
+            <Github size={20} />
+          </a>
+          <a href="https://linkedin.com/in/louisforget" target="_blank" rel="noopener noreferrer" class="p-3 bg-muted hover:bg-muted/80 rounded-lg transition-colors" aria-label="LinkedIn">
+            <Linkedin size={20} />
+          </a>
+          <a href="mailto:louis@example.com" class="p-3 bg-muted hover:bg-muted/80 rounded-lg transition-colors" aria-label="Email">
+            <Mail size={20} />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right - Image Placeholder -->
+      <div class="hidden lg:block">
+        <div class="relative">
+          <div class="aspect-square bg-gradient-to-br from-blue-400 via-cyan-400 to-blue-500 rounded-2xl opacity-20 blur-2xl"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-64 h-64 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl border border-border flex items-center justify-center text-muted-foreground">
+              <span class="text-center text-sm">Photo Placeholder (1:1 ratio)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes scroll-hint {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+</style>

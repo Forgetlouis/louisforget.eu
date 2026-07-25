@@ -1,0 +1,101 @@
+---
+import Section from '@components/common/Section.astro';
+import statisticsData from '@data/statistics.json';
+import { getIconComponent } from '@utils/icons';
+
+type IconName = 'Briefcase' | 'Code' | 'Zap' | 'Award' | 'Bike' | 'Mountain';
+---
+
+<Section 
+  id="statistics" 
+  title="Quelques chiffres"
+  subtitle="Résumé en nombres"
+>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+    {statisticsData.map((stat, index) => {
+      const Icon = getIconComponent(stat.icon as IconName);
+      return (
+        <div 
+          class="text-center space-y-3 animate-count-up"
+          style={`animation-delay: ${index * 100}ms`}
+        >
+          <div class="flex justify-center mb-2">
+            <div class="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg">
+              <Icon size={24} className="text-blue-600 dark:text-blue-400" />
+            </div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold tracking-tight">
+              <span class="count-value">{stat.value}</span><span class="text-xl">{stat.suffix}</span>
+            </div>
+            <p class="text-sm text-muted-foreground mt-2">{stat.label}</p>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</Section>
+
+<script>
+  // Intersection Observer for animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        
+        // Animate number counting
+        const countElement = entry.target.querySelector('.count-value');
+        if (countElement && !countElement.classList.contains('animated')) {
+          const finalValue = parseInt(countElement.textContent || '0');
+          animateNumber(countElement, finalValue);
+          countElement.classList.add('animated');
+        }
+      }
+    });
+  }, observerOptions);
+
+  function animateNumber(element: Element, finalValue: number) {
+    const duration = 2000;
+    const steps = 60;
+    const stepValue = finalValue / steps;
+    let currentStep = 0;
+
+    const interval = setInterval(() => {
+      currentStep++;
+      const currentValue = Math.floor(stepValue * currentStep);
+      element.textContent = currentValue.toString();
+
+      if (currentStep >= steps) {
+        element.textContent = finalValue.toString();
+        clearInterval(interval);
+      }
+    }, duration / steps);
+  }
+
+  document.querySelectorAll('#statistics > div > div').forEach((element) => {
+    observer.observe(element);
+  });
+</script>
+
+<style>
+  @keyframes count-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-count-up {
+    animation: count-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+</style>

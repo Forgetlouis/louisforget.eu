@@ -1,0 +1,99 @@
+---
+import { Github, Linkedin, Mail, Download, Scale3D } from 'lucide-react';
+---
+
+<footer class="border-t border-border bg-background">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div class="space-y-4">
+        <h3 class="font-semibold text-lg">Louis Forget</h3>
+        <p class="text-sm text-muted-foreground">Cloud Engineer • Platform Engineer • SRE</p>
+        <p class="text-xs text-muted-foreground">Passionné par l'infrastructure, l'automatisation et la qualité logicielle.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-4">
+        <h4 class="font-semibold text-sm">Navigation</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="/" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
+          <a href="/projects" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Projets</a>
+          <a href="/cv" class="text-sm text-muted-foreground hover:text-foreground transition-colors">CV</a>
+          <a href="/lab" class="text-sm text-muted-foreground hover:text-foreground transition-colors">Lab</a>
+        </nav>
+      </div>
+
+      <!-- Social -->
+      <div class="space-y-4">
+        <h4 class="font-semibold text-sm">Social</h4>
+        <div class="flex gap-3">
+          <a href="https://github.com/louisforget" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="GitHub">
+            <Github size={18} />
+          </a>
+          <a href="https://linkedin.com/in/louisforget" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="LinkedIn">
+            <Linkedin size={18} />
+          </a>
+          <a href="mailto:louis@example.com" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="Email">
+            <Mail size={18} />
+          </a>
+        </div>
+      </div>
+
+      <!-- Download CV -->
+      <div class="space-y-4">
+        <h4 class="font-semibold text-sm">Documents</h4>
+        <a href="/cv.pdf" download class="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 rounded-md text-sm font-medium transition-colors">
+          <Download size={16} />
+          Télécharger CV
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-border my-8"></div>
+
+    <!-- Bottom Section -->
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+      <div class="flex items-center gap-2">
+        <span>© 2024 Louis Forget</span>
+        <span>•</span>
+        <a href="/legal" class="hover:text-foreground transition-colors">Mentions légales</a>
+      </div>
+      <p class="italic text-xs">
+        Designed & built with <span class="text-red-500">♥</span> by Louis
+      </p>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-40 p-3 bg-muted hover:bg-muted/80 rounded-full transition-all opacity-0 invisible hover:scale-110" aria-label="Back to top" style="display: none;">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      </svg>
+    </button>
+  </div>
+</footer>
+
+<script>
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      scrollToTopBtn?.classList.remove('opacity-0', 'invisible');
+      scrollToTopBtn?.classList.add('opacity-100', 'visible');
+    } else {
+      scrollToTopBtn?.classList.add('opacity-0', 'invisible');
+      scrollToTopBtn?.classList.remove('opacity-100', 'visible');
+    }
+  });
+
+  scrollToTopBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<style>
+  button#scroll-to-top {
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+  }
+</style>

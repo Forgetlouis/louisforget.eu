@@ -1,0 +1,38 @@
+[
+  {
+    "id": "automate",
+    "icon": "Zap",
+    "title": "Automatiser avant d'opérer",
+    "description": "Toute tâche répétitive mérite d'être automatisée. Je privilégie les outils qui réduisent les opérations manuelles et rendent les plateformes plus fiables."
+  },
+  {
+    "id": "iac",
+    "icon": "Code",
+    "title": "Infrastructure as Code",
+    "description": "Toute infrastructure doit être reproductible, versionnée et revue comme du code."
+  },
+  {
+    "id": "pragmatism",
+    "icon": "Cloud",
+    "title": "Cloud pragmatique",
+    "description": "Je privilégie les solutions simples, robustes et faciles à maintenir plutôt que la complexité inutile."
+  },
+  {
+    "id": "observe",
+    "icon": "BarChart3",
+    "title": "Observer avant d'optimiser",
+    "description": "Les métriques et l'observabilité doivent guider les décisions techniques."
+  },
+  {
+    "id": "learning",
+    "icon": "BookOpen",
+    "title": "Apprentissage continu",
+    "description": "Je consacre régulièrement du temps à découvrir de nouvelles technologies, expérimenter et améliorer mes compétences."
+  },
+  {
+    "id": "sharing",
+    "icon": "Users",
+    "title": "Partage des connaissances",
+    "description": "La documentation, la transmission et les bonnes pratiques sont des éléments essentiels d'une équipe technique performante."
+  }
+]
