@@ -74,10 +74,10 @@ const timelineItems = [
     </div>
 
     <div class="relative mt-12">
-      <div class="absolute bottom-0 left-[91px] top-0 hidden w-px bg-gradient-to-b from-indigo-400 via-amber-400 to-teal-300 sm:block lg:left-[177px]"></div>
+      <div class="absolute bottom-0 left-[160px] top-0 hidden w-px bg-gradient-to-b from-indigo-400 via-amber-400 to-teal-300 sm:block lg:left-[302px]"></div>
 
       {timelineItems.map((item, index) => (
-        <article class="group relative grid gap-5 pb-12 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[205px_58px_1fr]">
+        <article class="group relative grid gap-5 pb-12 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[250px_64px_1fr]">
           <div class="pt-1 sm:text-right">
             <p class="font-mono text-xs uppercase tracking-[0.12em] text-white/55">{item.period}</p>
             <p class="mt-3 text-sm font-semibold" style={`color: ${item.accent}`}>{item.value}</p>
@@ -85,7 +85,7 @@ const timelineItems = [
               {item.principles.map((principle) => {
                 const Icon = getIconComponent(principle.icon as 'Zap' | 'Code' | 'Cloud' | 'BarChart3' | 'BookOpen' | 'Users');
                 return (
-                  <div class="ml-auto max-w-[190px] rounded-lg border border-white/[0.08] bg-white/[0.035] p-3 text-left transition-colors group-hover:border-white/[0.14]">
+                  <div class="ml-auto max-w-[220px] rounded-lg border border-white/[0.08] bg-white/[0.035] p-3 text-left transition-colors group-hover:border-white/[0.14]">
                     <div class="flex items-start gap-2">
                       <Icon size={14} strokeWidth={1.5} style={{ color: item.accent }} />
                       <p class="text-[11px] font-medium leading-4 text-slate-200">{principle.title}</p>
@@ -126,21 +126,11 @@ const timelineItems = [
                 <span class="rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-slate-300">{technology}</span>
               ))}
             </div>
-
-            {item.principles && item.principles.length > 0 && (
-              <div class="mt-4">
-                {item.principles.map((principle) => (
-                  <span class="mr-2 inline-block rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-slate-300">
-                    {principle?.name}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </article>
       ))}
 
-      <article class="relative grid gap-5 pb-4 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[205px_58px_1fr]">
+      <article class="relative grid gap-5 pb-4 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[250px_64px_1fr]">
         <div class="pt-1 sm:text-right">
           <p class="font-mono text-xs uppercase tracking-[0.12em] text-white/55">2022 — 2023</p>
           <p class="mt-3 text-sm font-semibold text-indigo-300">Valider</p>
@@ -150,7 +140,7 @@ const timelineItems = [
               if (!principle) return null;
               const Icon = getIconComponent(principle.icon as 'Zap' | 'Code' | 'Cloud' | 'BarChart3' | 'BookOpen' | 'Users');
               return (
-                <div class="ml-auto max-w-[190px] rounded-lg border border-white/[0.08] bg-white/[0.035] p-3 text-left">
+                <div class="ml-auto max-w-[220px] rounded-lg border border-white/[0.08] bg-white/[0.035] p-3 text-left">
                   <div class="flex items-start gap-2">
                     <Icon size={14} strokeWidth={1.5} className="text-indigo-300" />
                     <p class="text-[11px] font-medium leading-4 text-slate-200">{principle.title}</p>
