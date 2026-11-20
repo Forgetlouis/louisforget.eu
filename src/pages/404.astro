@@ -3,6 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import Navigation from '@components/layout/Navigation.astro';
 import Footer from '@components/layout/Footer.astro';
 import Button from '@components/common/Button.astro';
+import { withBase } from '@utils/routes';
 
 const title = '404 - Page non trouvée';
 ---
@@ -22,7 +23,7 @@ const title = '404 - Page non trouvée';
         </p>
         
         <div class="pt-4">
-          <Button href="/" variant="primary" size="lg">
+          <Button href={withBase('/')} variant="primary" size="lg">
             Retour à l'accueil
           </Button>
         </div>

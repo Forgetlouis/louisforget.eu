@@ -1,4 +1,6 @@
 ---
+import { withBase } from '@utils/routes';
+
 interface Props {
   title: string;
   description?: string;
@@ -25,7 +27,7 @@ const { title, description } = Astro.props;
     />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
     
     <!-- Analytics -->
     <script defer data-domain="louisforget.eu" src="https://plausible.io/js/script.js"></script>

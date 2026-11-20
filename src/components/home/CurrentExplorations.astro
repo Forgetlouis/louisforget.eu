@@ -2,6 +2,7 @@
 import Section from '@components/common/Section.astro';
 import Badge from '@components/common/Badge.astro';
 import explorationsData from '@data/explorations.json';
+import { withBase } from '@utils/routes';
 ---
 
 <Section 
@@ -24,7 +25,7 @@ import explorationsData from '@data/explorations.json';
     </div>
 
     <p class="text-sm text-muted-foreground pt-6">
-      → Consultez la page <a href="/lab" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Lab</a> pour découvrir mes projets d'expérimentation actuels
+      → Consultez la page <a href={withBase('/lab')} class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Lab</a> pour découvrir mes projets d'expérimentation actuels
     </p>
   </div>
 </Section>
