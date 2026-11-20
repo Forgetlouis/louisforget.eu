@@ -1,50 +1,35 @@
 ---
-import Section from '@components/common/Section.astro';
-import Card from '@components/common/Card.astro';
 import passionsData from '@data/passions.json';
 ---
 
-<Section 
-  id="passions" 
-  title="Mes passions"
-  subtitle="Ce qui m'anime au-delà du code"
->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {passionsData.map((passion, index) => (
-      <Card className="animate-fade-in" style={`animation-delay: ${index * 150}ms`}>
-        <div class="space-y-4">
-          <div class="text-5xl">{passion.emoji}</div>
+<section id="passions" class="border-t border-border px-4 py-20 sm:px-6 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-14 grid gap-5 lg:grid-cols-[0.55fr_1.45fr]">
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-muted-foreground">Ce qui compte</p>
+      <div>
+        <h2 class="max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">Mes passions racontent aussi ma manière de travailler.</h2>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">Endurance, préparation, observation et adaptation : les mêmes réflexes guidés dehors sont utiles en engineering.</p>
+      </div>
+    </div>
+
+    <div class="divide-y divide-border border-y border-border">
+      {passionsData.map((passion, index) => (
+        <article class="grid gap-5 py-8 sm:grid-cols-[80px_0.75fr_1.25fr] sm:items-start lg:py-10">
+          <p class="font-mono text-xs text-muted-foreground">0{index + 1}</p>
           <div>
-            <h3 class="text-2xl font-semibold mb-3">{passion.title}</h3>
-            <p class="text-muted-foreground mb-4 leading-relaxed">{passion.description}</p>
-            <div class="flex flex-wrap gap-2">
+            <span class="mb-4 block text-3xl" aria-hidden="true">{passion.emoji}</span>
+            <h3 class="text-xl font-semibold tracking-tight">{passion.title}</h3>
+          </div>
+          <div>
+            <p class="max-w-xl text-sm leading-7 text-muted-foreground">{passion.description}</p>
+            <div class="mt-5 flex flex-wrap gap-x-4 gap-y-2">
               {passion.highlights.map((highlight) => (
-                <span class="inline-block px-3 py-1 bg-muted rounded-full text-sm text-foreground/70">
-                  {highlight}
-                </span>
+                <span class="font-mono text-[11px] uppercase tracking-wide text-foreground/55">{highlight}</span>
               ))}
             </div>
           </div>
-        </div>
-      </Card>
-    ))}
+        </article>
+      ))}
+    </div>
   </div>
-</Section>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
-    opacity: 0;
-  }
-</style>
+</section>

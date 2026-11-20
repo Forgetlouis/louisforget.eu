@@ -9,12 +9,12 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Accueil', href: '/' },
-  { label: 'Projets', href: '/projects' },
-  { label: 'CV', href: '/cv' },
+  { label: 'Moi', href: '/moi' },
   { label: 'Lab', href: '/lab' },
 ];
 
-const currentPath = Astro.url.pathname;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') || '/';
 ---
 
 <nav class="fixed top-0 z-50 w-full border-b border-border/0 bg-background/0 backdrop-blur-none transition-all duration-300" id="navbar">

@@ -7,6 +7,7 @@ import Timeline from '@components/timeline/Timeline.astro';
 import Badge from '@components/common/Badge.astro';
 import experienceData from '@data/experience.json';
 import skillsData from '@data/skills.json';
+import { withBase } from '@utils/routes';
 
 const title = 'CV & Timeline - Louis Forget';
 const description = 'Expérience professionnelle, éducation, certifications et compétences';
@@ -40,6 +41,7 @@ const skillCategories = Object.entries(skillsData)
   }));
 
 const softSkills = skillsData.softSkills;
+const target = withBase('/#experience');
 ---
 
 <BaseLayout {title} {description}>
@@ -137,4 +139,7 @@ const softSkills = skillsData.softSkills;
     </Section>
   </main>
   <Footer />
+  <script is:inline define:vars={{ target }}>
+    window.location.replace(target);
+  </script>
 </BaseLayout>

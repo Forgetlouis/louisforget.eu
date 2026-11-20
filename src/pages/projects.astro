@@ -5,9 +5,11 @@ import Footer from '@components/layout/Footer.astro';
 import Section from '@components/common/Section.astro';
 import ProjectSection from '@components/projects/ProjectSection.astro';
 import projectsData from '@data/projects.json';
+import { withBase } from '@utils/routes';
 
 const title = 'Projets & Expérience - Louis Forget';
 const description = 'Mes projets majeurs en Infrastructure as Code, Cloud, IA et Automation';
+const target = withBase('/moi');
 ---
 
 <BaseLayout {title} {description}>
@@ -56,4 +58,7 @@ const description = 'Mes projets majeurs en Infrastructure as Code, Cloud, IA et
     </Section>
   </main>
   <Footer />
+  <script is:inline define:vars={{ target }}>
+    window.location.replace(target);
+  </script>
 </BaseLayout>
