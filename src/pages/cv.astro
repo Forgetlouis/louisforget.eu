@@ -15,6 +15,31 @@ const description = 'Expérience professionnelle, éducation, certifications et 
 const experiences = experienceData.filter((item) => item.type === 'experience');
 const education = experienceData.filter((item) => item.type === 'education');
 const certifications = experienceData.filter((item) => item.type === 'certification');
+
+const categoryLabels: Record<string, string> = {
+  cloud: 'Cloud Platforms',
+  infrastructure: 'Infrastructure',
+  containers: 'Containers & Orchestration',
+  devops: 'DevOps & CI/CD',
+  programming: 'Programmation',
+  observability: 'Observabilité',
+  architecture: 'Architecture',
+};
+
+const skillCategories = Object.entries(skillsData)
+  .filter(([category]) => category !== 'softSkills')
+  .map(([category, skills]) => ({
+    label: categoryLabels[category] ?? category.replace(/([A-Z])/g, ' $1').trim(),
+    skills: Array.isArray(skills)
+      ? skills.map((skill) =>
+          typeof skill === 'string'
+            ? { name: skill, proficiency: 'advanced' as const }
+            : { name: skill.name, proficiency: skill.proficiency }
+        )
+      : [],
+  }));
+
+const softSkills = skillsData.softSkills;
 ---
 
 <BaseLayout {title} {description}>
@@ -62,51 +87,34 @@ const certifications = experienceData.filter((item) => item.type === 'certificat
     <!-- Hard Skills Section -->
     <Section id="skills" title="Compétences Techniques">
       <div class="space-y-8">
-        {Object.entries(skillsData).map(([category, skills]) => {
-          if (category === 'softSkills') return null;
-          return (
-            <div key={category}>
-              <h3 class="text-lg font-semibold mb-4 capitalize">
-                {category === 'devops' ? 'DevOps & CI/CD' : 
-                 category === 'programming' ? 'Programmation' :
-                 category === 'infrastructure' ? 'Infrastructure' :
-                 category === 'containers' ? 'Containers & Orchestration' :
-                 category === 'architecture' ? 'Architecture' :
-                 category === 'observability' ? 'Observabilité' :
-                 category === 'cloud' ? 'Cloud Platforms' :
-                 category.replace(/([A-Z])/g, ' $1').trim()}
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                {Array.isArray(skills) && skills.map((skill: any) => {
-                  const skillName = typeof skill === 'string' ? skill : skill.name;
-                  const proficiency = typeof skill === 'string' ? 'advanced' : skill.proficiency;
-                  
-                  const variantMap: Record<string, string> = {
-                    'expert': 'default',
-                    'advanced': 'secondary',
-                    'intermediate': 'outline',
-                  };
-                  
-                  return (
-                    <Badge 
-                      variant={variantMap[proficiency] as any || 'outline'}
-                      size="md"
-                    >
-                      {skillName}
-                    </Badge>
-                  );
-                })}
-              </div>
+        {skillCategories.map((category) => (
+          <div>
+            <h3 class="text-lg font-semibold mb-4 capitalize">{category.label}</h3>
+            <div class="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <Badge
+                  variant={
+                    skill.proficiency === 'expert'
+                      ? 'default'
+                      : skill.proficiency === 'advanced'
+                        ? 'secondary'
+                        : 'outline'
+                  }
+                  size="md"
+                >
+                  {skill.name}
+                </Badge>
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </Section>
 
     <!-- Soft Skills Section -->
     <Section id="soft-skills" title="Compétences Transversales">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {(skillsData.softSkills as string[]).map((skill) => (
+        {softSkills.map((skill) => (
           <div class="p-4 border border-border rounded-lg bg-muted/30">
             <p class="font-medium">{skill}</p>
           </div>
