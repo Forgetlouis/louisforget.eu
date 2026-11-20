@@ -1,120 +1,147 @@
 ---
 import experienceData from '@data/experience.json';
 import skillsData from '@data/skills.json';
+import { withBase } from '@utils/routes';
 
-const experiences = experienceData.filter((item) => item.type === 'experience');
+const experiences = experienceData
+  .filter((item) => item.type === 'experience')
+  .sort((a, b) => a.startDate.localeCompare(b.startDate));
 const education = experienceData.filter((item) => item.type === 'education');
 const certifications = experienceData.filter((item) => item.type === 'certification');
 
-const formatDate = (date: string) => {
-  const [year, month] = date.split('-');
-  const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'];
-  return month ? `${monthNames[Number(month) - 1]} ${year}` : year;
+const valuesByPeriod: Record<string, string> = {
+  '2019-06': 'Automatiser',
+  '2022-01': 'Fiabiliser',
 };
 
-const highlightSkills = [
-  'Google Cloud',
-  'Terraform',
-  'Kubernetes',
-  'GitHub Actions',
-  'Python',
-  'Observability',
+const formatYearRange = (item: (typeof experiences)[number]) => {
+  const start = item.startDate.slice(0, 4);
+  const end = item.endDate ? item.endDate.slice(0, 4) : 'Today';
+  return `${start} — ${end === 'Today' ? 'Now' : end}`;
+};
+
+const timelineItems = [
+  {
+    period: '2017 — 2019',
+    value: 'Construire',
+    kind: 'Formation',
+    title: 'Master Informatique',
+    entity: 'Université de Paris',
+    description: 'Fondations solides en informatique et spécialisation autour des systèmes distribués, du cloud et des architectures modernes.',
+    technologies: ['Cloud Architecture', 'Distributed Systems'],
+    accent: '#818cf8',
+  },
+  ...experiences.map((item) => ({
+    period: formatYearRange(item).replace('Now', 'Maintenant'),
+    value: valuesByPeriod[item.startDate] ?? 'Évoluer',
+    kind: 'Expérience',
+    title: item.position,
+    entity: item.company,
+    description: item.description,
+    technologies: item.technologies,
+    highlights: item.highlights,
+    accent: item.startDate === '2022-01' ? '#2dd4bf' : '#f59e0b',
+  })),
 ];
 ---
 
-<section id="experience" class="border-t border-border px-4 py-20 sm:px-6 lg:py-28">
-  <div class="mx-auto max-w-6xl">
-    <div class="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
-      <div class="lg:sticky lg:top-28 lg:self-start">
-        <p class="mb-4 font-mono text-xs uppercase tracking-[0.24em] text-muted-foreground">01 / Parcours</p>
-        <h2 class="max-w-md text-3xl font-semibold tracking-tight sm:text-4xl">Expérience & compétences</h2>
-        <p class="mt-5 max-w-md text-base leading-7 text-muted-foreground">
-          Plus de terrain, moins de résumés génériques. Une sélection claire de mon parcours, des technologies que j’utilise et de ce que j’ai appris.
-        </p>
+<section id="experience" class="relative overflow-hidden bg-[#09111f] px-4 py-20 text-white sm:px-6 lg:py-28">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute -left-32 top-20 h-72 w-72 rounded-full bg-indigo-500/[0.12] blur-3xl"></div>
+    <div class="absolute -right-24 bottom-16 h-80 w-80 rounded-full bg-teal-400/[0.10] blur-3xl"></div>
+  </div>
 
-        <div class="mt-8 flex flex-wrap gap-2">
-          {highlightSkills.map((skill) => (
-            <span class="rounded-full border border-border px-3 py-1.5 font-mono text-xs text-foreground/75">{skill}</span>
-          ))}
-        </div>
-
-        <a href="/cv.pdf" download class="mt-8 inline-flex items-center gap-2 border-b border-foreground/30 pb-1 text-sm font-medium transition-colors hover:border-foreground">
-          Télécharger le CV
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-
+  <div class="relative mx-auto max-w-6xl">
+    <div class="grid items-end gap-6 border-b border-white/[0.10] pb-10 lg:grid-cols-[0.7fr_1.3fr]">
       <div>
-        <div class="border-b border-border pb-4">
-          <p class="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Expérience professionnelle</p>
-        </div>
-
-        <div class="divide-y divide-border">
-          {experiences.map((item) => (
-            <article class="grid gap-4 py-8 sm:grid-cols-[145px_1fr]">
-              <p class="font-mono text-xs text-muted-foreground">
-                {formatDate(item.startDate)} — {item.endDate ? formatDate(item.endDate) : 'Aujourd’hui'}
-              </p>
-              <div>
-                <div class="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 class="text-xl font-semibold tracking-tight">{item.position}</h3>
-                  <p class="text-sm text-muted-foreground">{item.company}</p>
-                </div>
-                <p class="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">{item.description}</p>
-                {item.highlights && (
-                  <ul class="mt-4 space-y-2 text-sm text-foreground/75">
-                    {item.highlights.slice(0, 3).map((highlight) => (
-                      <li class="flex gap-3"><span class="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-foreground/50"></span>{highlight}</li>
-                    ))}
-                  </ul>
-                )}
-                <div class="mt-5 flex flex-wrap gap-2">
-                  {item.technologies?.map((technology) => (
-                    <span class="text-xs text-muted-foreground">{technology}</span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div class="mt-10 grid gap-8 sm:grid-cols-2">
-          <div>
-            <p class="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Formation</p>
-            <div class="space-y-5">
-              {education.map((item) => (
-                <div>
-                  <p class="text-sm font-medium">{item.title}</p>
-                  <p class="mt-1 text-xs text-muted-foreground">{item.institution} · {item.year}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p class="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Certifications</p>
-            <div class="space-y-5">
-              {certifications.map((item) => (
-                <div>
-                  <p class="text-sm font-medium">{item.title}</p>
-                  <p class="mt-1 text-xs text-muted-foreground">{item.issuer} · {item.year}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-10 border-t border-border pt-8">
-          <p class="mb-5 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">Domaines</p>
-          <div class="flex flex-wrap gap-x-5 gap-y-3">
-            {Object.entries(skillsData)
-              .filter(([category]) => category !== 'softSkills')
-              .flatMap(([, skills]) => (Array.isArray(skills) ? skills : []))
-              .map((skill) => (
-                <span class="text-sm text-foreground/75">{typeof skill === 'string' ? skill : skill.name}</span>
-              ))}
-          </div>
-        </div>
+        <p class="font-mono text-xs uppercase tracking-[0.24em] text-teal-300">Parcours / 2017 → maintenant</p>
       </div>
+      <div>
+        <h2 class="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl">
+          Une trajectoire construite autour de la <span class="text-teal-300">fiabilité</span> et de l’automatisation.
+        </h2>
+      </div>
+    </div>
+
+    <div class="relative mt-12">
+      <div class="absolute bottom-0 left-[91px] top-0 hidden w-px bg-gradient-to-b from-indigo-400 via-amber-400 to-teal-300 sm:block lg:left-[177px]"></div>
+
+      {timelineItems.map((item, index) => (
+        <article class="group relative grid gap-5 pb-12 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[205px_58px_1fr]">
+          <div class="pt-1 sm:text-right">
+            <p class="font-mono text-xs uppercase tracking-[0.12em] text-white/55">{item.period}</p>
+            <p class="mt-3 text-sm font-semibold" style={`color: ${item.accent}`}>{item.value}</p>
+          </div>
+
+          <div class="relative hidden justify-center sm:flex">
+            <span
+              class="relative z-10 mt-1 h-3 w-3 rounded-full border-[3px] border-[#09111f] shadow-[0_0_0_1px_currentColor] transition-transform duration-300 group-hover:scale-125"
+              style={`color: ${item.accent}; background: ${item.accent}`}
+            ></span>
+          </div>
+
+          <div class="relative border-l border-white/[0.10] pl-5 sm:border-l-0 sm:pl-0">
+            <span class="mb-5 inline-flex rounded-full border border-white/[0.12] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/50 sm:absolute sm:right-0 sm:top-0">
+              {item.kind}
+            </span>
+            <h3 class="max-w-2xl pr-24 text-2xl font-semibold tracking-tight sm:text-3xl">{item.title}</h3>
+            <p class="mt-2 font-mono text-xs uppercase tracking-[0.12em]" style={`color: ${item.accent}`}>{item.entity}</p>
+            <p class="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">{item.description}</p>
+
+            {'highlights' in item && item.highlights && (
+              <ul class="mt-6 grid gap-3 md:grid-cols-3">
+                {item.highlights.slice(0, 3).map((highlight) => (
+                  <li class="border-t border-white/[0.10] pt-3 text-xs leading-5 text-slate-300">
+                    <span class="mr-2" style={`color: ${item.accent}`}>↗</span>{highlight}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {item.technologies?.map((technology) => (
+                <span class="rounded-full border border-white/[0.12] bg-white/[0.04] px-3 py-1 font-mono text-[11px] text-slate-300">{technology}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <article class="relative grid gap-5 pb-4 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[205px_58px_1fr]">
+        <div class="pt-1 sm:text-right">
+          <p class="font-mono text-xs uppercase tracking-[0.12em] text-white/55">2022 — 2023</p>
+          <p class="mt-3 text-sm font-semibold text-indigo-300">Valider</p>
+        </div>
+        <div class="relative hidden justify-center sm:flex">
+          <span class="relative z-10 mt-1 h-3 w-3 rounded-full border-[3px] border-[#09111f] bg-indigo-300 shadow-[0_0_0_1px_#818cf8]"></span>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-white/50">Certifications</p>
+          <div class="mt-4 grid gap-3 md:grid-cols-2">
+            {certifications.map((certification) => (
+              <div class="rounded-xl border border-white/[0.10] bg-white/[0.035] p-5">
+                <p class="text-sm font-semibold">{certification.title}</p>
+                <p class="mt-2 font-mono text-[11px] text-indigo-300">{certification.issuer} · {certification.year}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="mt-12 flex flex-col gap-6 border-t border-white/[0.10] pt-8 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        {Object.entries(skillsData)
+          .filter(([category]) => category !== 'softSkills')
+          .flatMap(([, skills]) => (Array.isArray(skills) ? skills : []))
+          .slice(0, 12)
+          .map((skill) => (
+            <span class="font-mono text-[11px] text-slate-400">{typeof skill === 'string' ? skill : skill.name}</span>
+          ))}
+      </div>
+      <a href={withBase('/cv.pdf')} download class="shrink-0 border-b border-teal-300/50 pb-1 text-sm font-medium text-teal-300 transition-colors hover:border-teal-300">
+        Télécharger le CV ↗
+      </a>
     </div>
   </div>
 </section>
