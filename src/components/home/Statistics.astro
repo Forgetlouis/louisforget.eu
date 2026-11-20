@@ -6,96 +6,57 @@ import { getIconComponent } from '@utils/icons';
 type IconName = 'Briefcase' | 'Code' | 'Zap' | 'Award' | 'Bike' | 'Mountain';
 ---
 
-<Section 
-  id="statistics" 
-  title="Quelques chiffres"
-  subtitle="Résumé en nombres"
->
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-    {statisticsData.map((stat, index) => {
-      const Icon = getIconComponent(stat.icon as IconName);
-      return (
-        <div 
-          class="text-center space-y-3 animate-count-up"
-          style={`animation-delay: ${index * 100}ms`}
-        >
-          <div class="flex justify-center mb-2">
-            <div class="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg">
-              <Icon size={24} className="text-blue-600 dark:text-blue-400" />
+<section id="statistics" class="border-t border-white/[0.08] bg-[#0c1628] px-4 py-20 text-white sm:px-6 lg:py-24">
+  <div class="mx-auto max-w-6xl">
+    <div class="mb-10 grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:items-end">
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-cyan-300">Quelques chiffres</p>
+      <p class="max-w-xl text-sm leading-6 text-slate-400 md:text-right md:justify-self-end">Des repères place holders, prêts à évoluer avec votre parcours réel.</p>
+    </div>
+
+    <div class="grid border-l border-t border-white/[0.10] sm:grid-cols-2 lg:grid-cols-6">
+      {statisticsData.map((stat, index) => {
+        const Icon = getIconComponent(stat.icon as IconName);
+        return (
+          <article class="min-h-44 border-b border-r border-white/[0.10] p-5 transition-colors hover:bg-white/[0.035]">
+            <div class="flex items-start justify-between">
+              <Icon size={18} strokeWidth={1.5} className={index % 2 === 0 ? 'text-cyan-300' : 'text-indigo-300'} />
+              <span class="font-mono text-[10px] text-slate-500">0{index + 1}</span>
             </div>
-          </div>
-          <div>
-            <div class="text-3xl sm:text-4xl font-bold tracking-tight">
-              <span class="count-value">{stat.value}</span><span class="text-xl">{stat.suffix}</span>
+            <div class="mt-10">
+              <p class="text-3xl font-semibold tracking-tight"><span class="count-value">{stat.value}</span><span class="ml-1 text-lg text-slate-400">{stat.suffix}</span></p>
+              <p class="mt-2 text-xs leading-5 text-slate-400">{stat.label}</p>
             </div>
-            <p class="text-sm text-muted-foreground mt-2">{stat.label}</p>
-          </div>
-        </div>
-      );
-    })}
+          </article>
+        );
+      })}
+    </div>
   </div>
-</Section>
+</section>
 
 <script>
-  // Intersection Observer for animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px',
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        
-        // Animate number counting
-        const countElement = entry.target.querySelector('.count-value');
-        if (countElement && !countElement.classList.contains('animated')) {
-          const finalValue = parseInt(countElement.textContent || '0');
-          animateNumber(countElement, finalValue);
-          countElement.classList.add('animated');
-        }
-      }
+      if (!entry.isIntersecting) return;
+
+      entry.target.querySelectorAll('.count-value').forEach((element) => {
+        if (element.classList.contains('animated')) return;
+
+        element.classList.add('animated');
+        const finalValue = Number(element.textContent || 0);
+        const duration = 1200;
+        const started = performance.now();
+
+        const tick = (now) => {
+          const progress = Math.min((now - started) / duration, 1);
+          element.textContent = Math.floor(finalValue * (1 - Math.pow(1 - progress, 3))).toString();
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      });
     });
-  }, observerOptions);
+  }, { threshold: 0.25 });
 
-  function animateNumber(element: Element, finalValue: number) {
-    const duration = 2000;
-    const steps = 60;
-    const stepValue = finalValue / steps;
-    let currentStep = 0;
-
-    const interval = setInterval(() => {
-      currentStep++;
-      const currentValue = Math.floor(stepValue * currentStep);
-      element.textContent = currentValue.toString();
-
-      if (currentStep >= steps) {
-        element.textContent = finalValue.toString();
-        clearInterval(interval);
-      }
-    }, duration / steps);
-  }
-
-  document.querySelectorAll('#statistics > div > div').forEach((element) => {
-    observer.observe(element);
-  });
+  const section = document.getElementById('statistics');
+  if (section) observer.observe(section);
 </script>
-
-<style>
-  @keyframes count-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-count-up {
-    animation: count-up 0.6s ease-out forwards;
-    opacity: 0;
-  }
-</style>

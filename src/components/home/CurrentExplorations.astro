@@ -1,31 +1,31 @@
 ---
 import Section from '@components/common/Section.astro';
-import Badge from '@components/common/Badge.astro';
 import explorationsData from '@data/explorations.json';
 import { withBase } from '@utils/routes';
 ---
 
-<Section 
-  id="explorations" 
-  title="Ce qui m'intéresse actuellement"
-  subtitle="Sujets en cours d'exploration"
->
-  <div class="space-y-4">
-    <p class="text-lg text-muted-foreground max-w-3xl">
-      Je consacre régulièrement du temps à l'apprentissage et l'expérimentation. 
-      Voici les domaines sur lesquels je travaille actuellement pour renforcer mes compétences.
-    </p>
-    
-    <div class="flex flex-wrap gap-3 pt-6">
-      {explorationsData.map((item) => (
-        <Badge variant="secondary" size="md">
-          {item.title}
-        </Badge>
+<section id="explorations" class="border-t border-white/[0.08] bg-[#09111f] px-4 py-20 text-white sm:px-6 lg:py-28">
+  <div class="mx-auto max-w-6xl">
+    <div class="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]">
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-teal-300">En exploration</p>
+      <div>
+        <h2 class="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl">Ce que j’apprends avant que cela devienne évident.</h2>
+        <p class="mt-5 max-w-2xl text-base leading-7 text-slate-400">Je réserve une partie de mon temps à l’expérimentation, aux prototypes et à la compréhension des nouvelles limites de la plateforme.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 grid border-l border-t border-white/[0.10] sm:grid-cols-2 lg:grid-cols-3">
+      {explorationsData.map((item, index) => (
+        <article class="group flex min-h-36 items-end justify-between border-b border-r border-white/[0.10] p-5 transition-colors hover:bg-white/[0.035] sm:p-6">
+          <h3 class="max-w-[16rem] text-lg font-medium tracking-tight">{item.title}</h3>
+          <span class="font-mono text-[10px] text-slate-500">{String(index + 1).padStart(2, '0')}</span>
+        </article>
       ))}
     </div>
 
-    <p class="text-sm text-muted-foreground pt-6">
-      → Consultez la page <a href={withBase('/lab')} class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Lab</a> pour découvrir mes projets d'expérimentation actuels
-    </p>
+    <div class="mt-10 flex flex-col gap-4 border-t border-white/[0.10] pt-7 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-slate-400">Les prototypes, essais et apprentissages sont documentés dans le Lab.</p>
+      <a href={withBase('/lab')} class="shrink-0 border-b border-teal-300/50 pb-1 text-sm font-medium text-teal-300 transition-colors hover:border-teal-300">Explorer le Lab ↗</a>
+    </div>
   </div>
-</Section>
+</section>

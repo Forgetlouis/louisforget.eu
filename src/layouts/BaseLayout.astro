@@ -11,7 +11,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,17 +36,6 @@ const { title, description } = Astro.props;
   <body class="bg-background text-foreground">
     <slot />
     <script>
-      // Dark mode detection and theme initialization
-      if (
-        localStorage.theme === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-
-      // Scroll to top button
       window.addEventListener('scroll', () => {
         const scrollToTop = document.getElementById('scroll-to-top');
         if (scrollToTop) {
@@ -58,20 +47,13 @@ const { title, description } = Astro.props;
 </html>
 
 <style is:global>
-  :root {
-    --color-foreground: 0 0% 3%;
-    --color-background: 0 0% 100%;
-    --color-muted: 0 0% 89%;
-    --color-muted-foreground: 0 0% 45%;
-    --color-border: 0 0% 89%;
-  }
-
+  :root,
   html.dark {
-    --color-foreground: 0 0% 98%;
-    --color-background: 0 0% 3%;
-    --color-muted: 0 0% 14%;
-    --color-muted-foreground: 0 0% 63%;
-    --color-border: 0 0% 14%;
+    --color-foreground: 210 40% 98%;
+    --color-background: 222 47% 7%;
+    --color-muted: 217 33% 15%;
+    --color-muted-foreground: 215 20% 65%;
+    --color-border: 217 33% 20%;
   }
 
   * {
