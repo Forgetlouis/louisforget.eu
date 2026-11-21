@@ -1,6 +1,11 @@
 ---
 import { Github, Linkedin, Mail, Download, Scale3D } from 'lucide-react';
 import { withBase } from '@utils/routes';
+import content from '@data/site-content.json';
+
+const footer = content.footer;
+const site = content.site;
+const navigation = content.navigation;
 ---
 
 <footer class="border-t border-[#cbd8dd] bg-[#edf3f5] text-[#101827]">
@@ -9,33 +14,32 @@ import { withBase } from '@utils/routes';
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       <!-- Brand -->
       <div class="space-y-4">
-        <h3 class="font-semibold text-lg">Louis Forget</h3>
-        <p class="text-sm text-[#52616b]">Cloud Engineer • Platform Engineer • SRE</p>
-        <p class="text-xs text-[#71858f]">Passionné par l'infrastructure, l'automatisation et la qualité logicielle.</p>
+        <h3 class="font-semibold text-lg">{site.name}</h3>
+        <p class="text-sm text-[#52616b]">{footer.role}</p>
+        <p class="text-xs text-[#71858f]">{footer.description}</p>
       </div>
 
       <!-- Quick Links -->
       <div class="space-y-4">
-        <h4 class="font-semibold text-sm">Navigation</h4>
+        <h4 class="font-semibold text-sm">{footer.navigationTitle}</h4>
         <nav class="flex flex-col gap-2">
-          <a href={withBase('/')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Accueil</a>
-          <a href={withBase('/moi')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Moi</a>
-          <a href={withBase('/lab')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Lab</a>
-          <a href={withBase('/#experience')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Expérience</a>
+          {navigation.map((item) => (
+            <a href={withBase(item.href)} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">{item.label}</a>
+          ))}
         </nav>
       </div>
 
       <!-- Social -->
       <div class="space-y-4">
-        <h4 class="font-semibold text-sm">Social</h4>
+        <h4 class="font-semibold text-sm">{footer.socialTitle}</h4>
         <div class="flex gap-3">
-          <a href="https://github.com/louisforget" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="GitHub">
+          <a href={site.github} target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="GitHub">
             <Github size={18} />
           </a>
-          <a href="https://linkedin.com/in/louisforget" target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="LinkedIn">
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="LinkedIn">
             <Linkedin size={18} />
           </a>
-          <a href="mailto:louis@example.com" class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="Email">
+          <a href={`mailto:${site.email}`} class="p-2 hover:bg-muted rounded-md transition-colors" aria-label="Email">
             <Mail size={18} />
           </a>
         </div>
@@ -43,10 +47,10 @@ import { withBase } from '@utils/routes';
 
       <!-- Download CV -->
       <div class="space-y-4">
-        <h4 class="font-semibold text-sm">Documents</h4>
+        <h4 class="font-semibold text-sm">{footer.documentsTitle}</h4>
         <a href={withBase('/cv.pdf')} download class="inline-flex items-center gap-2 px-4 py-2 border border-[#cbd8dd] bg-white hover:bg-[#f7fafb] rounded-md text-sm font-medium transition-colors">
           <Download size={16} />
-          Télécharger CV
+          {footer.downloadCv}
         </a>
       </div>
     </div>
@@ -57,13 +61,11 @@ import { withBase } from '@utils/routes';
     <!-- Bottom Section -->
     <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-[#71858f]">
       <div class="flex items-center gap-2">
-        <span>© 2024 Louis Forget</span>
+        <span>© {site.copyright} {site.name}</span>
         <span>•</span>
-        <a href={withBase('/legal')} class="hover:text-foreground transition-colors">Mentions légales</a>
+        <a href={withBase('/legal')} class="hover:text-foreground transition-colors">{footer.legal}</a>
       </div>
-      <p class="italic text-xs">
-        Designed & built with <span class="text-red-500">♥</span> by Louis
-      </p>
+      <p class="italic text-xs">{footer.signature}</p>
     </div>
 
     <!-- Scroll to Top Button -->

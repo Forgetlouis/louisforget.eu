@@ -1,0 +1,112 @@
+{
+  "site": {
+    "name": "Louis Forget",
+    "role": "Cloud Engineer · Platform Engineer · SRE",
+    "email": "louis@example.com",
+    "github": "https://github.com/louisforget",
+    "linkedin": "https://linkedin.com/in/louisforget",
+    "copyright": "2026"
+  },
+  "seo": {
+    "home": {
+      "title": "Louis Forget - Cloud Engineer & Platform Engineer",
+      "description": "Portfolio professionnel de Louis Forget. Cloud Engineer, Platform Engineer et SRE spécialisé en Infrastructure as Code et DevOps."
+    },
+    "moi": {
+      "title": "Moi — Louis Forget",
+      "description": "Randonnée, vélo, plongée, ingénierie et curiosité technique."
+    },
+    "lab": {
+      "title": "Lab - Projets d'expérimentation",
+      "description": "Découvrez mes projets d'expérimentation et d'apprentissage en cours."
+    }
+  },
+  "navigation": [
+    { "label": "Accueil", "href": "/" },
+    { "label": "Moi", "href": "/moi" },
+    { "label": "Lab", "href": "/lab" }
+  ],
+  "hero": {
+    "availability": "Disponible pour échanger",
+    "specialties": "Cloud · Platform · Reliability",
+    "tagline": "J’aide les équipes à construire des plateformes cloud fiables, explicables et faciles à utiliser.",
+    "primaryCta": "Voir mon parcours",
+    "secondaryCta": "Me connaître",
+    "portraitLabel": "Photo",
+    "profileMetaLeft": "IaC / Cloud",
+    "profileMetaRight": "SRE / Platform"
+  },
+  "trajectory": {
+    "eyebrow": "Parcours / 2017 → maintenant",
+    "titlePrefix": "Une trajectoire construite autour de la",
+    "titleAccent": "fiabilité",
+    "titleSuffix": "et de l’automatisation.",
+    "educationKind": "Formation",
+    "periodValues": {
+      "2019-06": "Automatiser",
+      "2022-01": "Fiabiliser",
+      "default": "Évoluer"
+    },
+    "certificationsKind": "Certifications",
+    "certificationsPeriod": "2022 — 2023",
+    "certificationsValue": "Valider",
+    "downloadCv": "Télécharger le CV",
+    "masterPeriod": "2017 — 2019",
+    "masterValue": "Construire",
+    "masterTitle": "Master Informatique",
+    "masterEntity": "Université de Paris",
+    "masterDescription": "Fondations solides en informatique et spécialisation autour des systèmes distribués, du cloud et des architectures modernes.",
+    "masterTechnologies": ["Cloud Architecture", "Distributed Systems"]
+  },
+  "statistics": {
+    "eyebrow": "Quelques chiffres",
+    "description": "Des repères placeholders, prêts à évoluer avec votre parcours réel."
+  },
+  "explorations": {
+    "eyebrow": "En exploration",
+    "title": "Ce que j’apprends avant que cela devienne évident.",
+    "description": "Je réserve une partie de mon temps à l’expérimentation, aux prototypes et à la compréhension des nouvelles limites de la plateforme.",
+    "footer": "Les prototypes, essais et apprentissages sont documentés dans le Lab.",
+    "cta": "Explorer le Lab"
+  },
+  "moi": {
+    "eyebrow": "Au-delà des systèmes",
+    "title": "L’ingénieur, le sportif, le curieux.",
+    "intro": "J’ai besoin de comprendre, de préparer et d’explorer. Ces trois moteurs traversent aussi bien mon travail que mes sorties en montagne, à vélo ou sous l’eau.",
+    "passionsEyebrow": "Ce qui compte",
+    "passionsTitle": "Mes passions racontent aussi ma manière de travailler.",
+    "passionsDescription": "Endurance, préparation, observation et adaptation : les mêmes réflexes guidés dehors sont utiles en engineering.",
+    "methodEyebrow": "Ma manière d’avancer",
+    "methods": [
+      { "title": "Préparer", "description": "Analyser le contexte, identifier les risques et partir avec un plan réaliste." },
+      { "title": "Tester", "description": "Apprendre par l’expérience, rester mesurable et accepter les ajustements." },
+      { "title": "Partager", "description": "Documenter, transmettre et faire grandir une équipe plutôt qu’une seule solution." }
+    ],
+    "labPrompt": "Vous voulez voir ce que j’explore actuellement ?",
+    "labCta": "Ouvrir le Lab"
+  },
+  "lab": {
+    "eyebrow": "Expérimentations / prototypes",
+    "title": "Le Lab",
+    "intro": "Mes projets d'expérimentation et d'apprentissage. Des essais techniques pour explorer de nouvelles limites et approfondir mes compétences.",
+    "technologiesLabel": "Technologies",
+    "progressLabel": "Progression",
+    "progressSuffix": "% complet",
+    "codeLabel": "Code",
+    "aboutTitle": "À propos de cette section",
+    "aboutParagraphs": [
+      "Le Lab est un espace d'expérimentation. Certains projets sont en cours d'évolution, d'autres sont des prototypes ou des explorations. L'objectif est d'apprendre continuellement et de partager mon processus d'apprentissage.",
+      "Consultez les dépôts GitHub pour plus de détails, code source et documentation."
+    ]
+  },
+  "footer": {
+    "role": "Cloud Engineer • Platform Engineer • SRE",
+    "description": "Passionné par l'infrastructure, l'automatisation et la qualité logicielle.",
+    "navigationTitle": "Navigation",
+    "socialTitle": "Social",
+    "documentsTitle": "Documents",
+    "downloadCv": "Télécharger CV",
+    "legal": "Mentions légales",
+    "signature": "Designed & built with ♥ by Louis"
+  }
+}

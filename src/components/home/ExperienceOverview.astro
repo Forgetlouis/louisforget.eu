@@ -2,6 +2,7 @@
 import experienceData from '@data/experience.json';
 import skillsData from '@data/skills.json';
 import philosophyData from '@data/philosophy.json';
+import content from '@data/site-content.json';
 import { getIconComponent } from '@utils/icons';
 import { withBase } from '@utils/routes';
 
@@ -10,11 +11,8 @@ const experiences = experienceData
   .sort((a, b) => a.startDate.localeCompare(b.startDate));
 const education = experienceData.filter((item) => item.type === 'education');
 const certifications = experienceData.filter((item) => item.type === 'certification');
-
-const valuesByPeriod: Record<string, string> = {
-  '2019-06': 'Automatiser',
-  '2022-01': 'Fiabiliser',
-};
+const trajectory = content.trajectory;
+const valuesByPeriod: Record<string, string> = trajectory.periodValues;
 
 const formatYearRange = (item: (typeof experiences)[number]) => {
   const start = item.startDate.slice(0, 4);
@@ -24,13 +22,13 @@ const formatYearRange = (item: (typeof experiences)[number]) => {
 
 const timelineItems = [
   {
-    period: '2017 — 2019',
-    value: 'Construire',
-    kind: 'Formation',
-    title: 'Master Informatique',
-    entity: 'Université de Paris',
-    description: 'Fondations solides en informatique et spécialisation autour des systèmes distribués, du cloud et des architectures modernes.',
-    technologies: ['Cloud Architecture', 'Distributed Systems'],
+    period: trajectory.masterPeriod,
+    value: trajectory.masterValue,
+    kind: trajectory.educationKind,
+    title: trajectory.masterTitle,
+    entity: trajectory.masterEntity,
+    description: trajectory.masterDescription,
+    technologies: trajectory.masterTechnologies,
     accent: '#818cf8',
     principles: ['learning', 'sharing']
       .map((id) => philosophyData.find((principle) => principle.id === id))
@@ -38,7 +36,7 @@ const timelineItems = [
   },
   ...experiences.map((item) => ({
     period: formatYearRange(item).replace('Now', 'Maintenant'),
-    value: valuesByPeriod[item.startDate] ?? 'Évoluer',
+    value: valuesByPeriod[item.startDate] ?? trajectory.periodValues.default,
     kind: 'Expérience',
     title: item.position,
     entity: item.company,
@@ -58,9 +56,9 @@ const timelineItems = [
 <section id="experience" class="relative overflow-hidden border-b border-[#cbd8dd] bg-[#edf3f5] px-4 py-20 text-[#101827] sm:px-6 lg:py-28">
   <div class="relative mx-auto max-w-6xl">
     <div class="grid items-end gap-6 border-b border-[#cbd8dd] pb-10 lg:grid-cols-[0.7fr_1.3fr]">
-      <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#55717d]">Parcours / 2017 → maintenant</p>
+      <p class="font-mono text-xs uppercase tracking-[0.24em] text-[#55717d]">{trajectory.eyebrow}</p>
       <h2 class="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl">
-        Une trajectoire construite autour de la <span class="text-[#3b7d78]">fiabilité</span> et de l’automatisation.
+        {trajectory.titlePrefix} <span class="text-[#3b7d78]">{trajectory.titleAccent}</span> {trajectory.titleSuffix}
       </h2>
     </div>
 
@@ -116,8 +114,8 @@ const timelineItems = [
 
       <article class="relative grid gap-5 pb-4 sm:grid-cols-[118px_44px_1fr] lg:grid-cols-[250px_64px_1fr]">
         <div class="pt-1 sm:text-right">
-          <p class="font-mono text-xs uppercase tracking-[0.12em] text-[#71858f]">2022 — 2023</p>
-          <p class="mt-3 text-sm font-semibold text-indigo-600">Valider</p>
+          <p class="font-mono text-xs uppercase tracking-[0.12em] text-[#71858f]">{trajectory.certificationsPeriod}</p>
+          <p class="mt-3 text-sm font-semibold text-indigo-600">{trajectory.certificationsValue}</p>
           <div class="mt-5 space-y-2">
             {['learning', 'sharing'].map((id) => {
               const principle = philosophyData.find((item) => item.id === id);
@@ -136,7 +134,7 @@ const timelineItems = [
         </div>
         <div class="relative hidden justify-center sm:flex"><span class="relative z-10 mt-1 h-3 w-3 rounded-full border-[3px] border-[#edf3f5] bg-indigo-500 shadow-[0_0_0_1px_#818cf8]"></span></div>
         <div class="rounded-2xl border border-[#cbd8dd] bg-white p-6 shadow-[0_18px_55px_-48px_rgba(15,23,42,0.65)]">
-          <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#71858f]">Certifications</p>
+          <p class="font-mono text-xs uppercase tracking-[0.16em] text-[#71858f]">{trajectory.certificationsKind}</p>
           <div class="mt-4 grid gap-3 md:grid-cols-2">
             {certifications.map((certification) => (
               <div class="rounded-xl border border-[#d3dfe3] bg-[#edf4f5] p-5">
@@ -155,7 +153,7 @@ const timelineItems = [
           <span class="font-mono text-[11px] text-[#71858f]">{typeof skill === 'string' ? skill : skill.name}</span>
         ))}
       </div>
-      <a href={withBase('/cv.pdf')} download class="shrink-0 border-b border-[#55717d]/40 pb-1 text-sm font-medium text-[#55717d]">Télécharger le CV ↗</a>
+      <a href={withBase('/cv.pdf')} download class="shrink-0 border-b border-[#55717d]/40 pb-1 text-sm font-medium text-[#55717d]">{trajectory.downloadCv} ↗</a>
     </div>
   </div>
 </section>

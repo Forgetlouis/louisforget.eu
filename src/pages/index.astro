@@ -6,9 +6,10 @@ import Hero from '@components/home/Hero.astro';
 import Statistics from '@components/home/Statistics.astro';
 import CurrentExplorations from '@components/home/CurrentExplorations.astro';
 import ExperienceOverview from '@components/home/ExperienceOverview.astro';
+import content from '@data/site-content.json';
 
-const title = 'Louis Forget - Cloud Engineer & Platform Engineer';
-const description = 'Portfolio professionnel de Louis Forget. Cloud Engineer, Platform Engineer et SRE spécialisé en Infrastructure as Code et DevOps.';
+const title = content.seo.home.title;
+const description = content.seo.home.description;
 ---
 
 <BaseLayout {title} {description}>

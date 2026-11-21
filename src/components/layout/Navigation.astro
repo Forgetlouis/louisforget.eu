@@ -1,17 +1,14 @@
 ---
 import { Menu, X } from 'lucide-react';
 import { withBase } from '@utils/routes';
+import content from '@data/site-content.json';
 
 interface NavItem {
   label: string;
   href: string;
 }
 
-const navItems: NavItem[] = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Moi', href: '/moi' },
-  { label: 'Lab', href: '/lab' },
-];
+const navItems: NavItem[] = content.navigation;
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') || '/';
@@ -23,7 +20,7 @@ const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') 
       <!-- Logo -->
       <a href={withBase('/')} class="group flex items-center gap-3 font-mono text-sm font-medium tracking-tight transition-opacity hover:opacity-70">
         <span class="grid h-8 w-8 place-items-center rounded-full border border-[#b7c7cd] text-xs text-[#55717d]">LF</span>
-        <span class="hidden text-[#101827] sm:inline">Louis Forget</span>
+        <span class="hidden text-[#101827] sm:inline">{content.site.name}</span>
       </a>
 
       <!-- Desktop Menu -->

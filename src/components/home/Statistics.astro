@@ -1,16 +1,19 @@
 ---
 import Section from '@components/common/Section.astro';
 import statisticsData from '@data/statistics.json';
+import content from '@data/site-content.json';
 import { getIconComponent } from '@utils/icons';
 
 type IconName = 'Briefcase' | 'Code' | 'Zap' | 'Award' | 'Bike' | 'Mountain';
+
+const statistics = content.statistics;
 ---
 
 <section id="statistics" class="border-t border-[#cbd8dd] bg-[#edf3f5] px-4 py-20 text-[#101827] sm:px-6 lg:py-24">
   <div class="mx-auto max-w-6xl">
     <div class="mb-10 grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:items-end">
-      <p class="font-mono text-xs uppercase tracking-[0.22em] text-[#55717d]">Quelques chiffres</p>
-      <p class="max-w-xl text-sm leading-6 text-[#71858f] md:text-right md:justify-self-end">Des repères place holders, prêts à évoluer avec votre parcours réel.</p>
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-[#55717d]">{statistics.eyebrow}</p>
+      <p class="max-w-xl text-sm leading-6 text-[#71858f] md:text-right md:justify-self-end">{statistics.description}</p>
     </div>
 
     <div class="grid border-l border-t border-[#cbd8dd] sm:grid-cols-2 lg:grid-cols-6">

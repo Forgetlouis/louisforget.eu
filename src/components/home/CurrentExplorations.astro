@@ -2,15 +2,18 @@
 import Section from '@components/common/Section.astro';
 import explorationsData from '@data/explorations.json';
 import { withBase } from '@utils/routes';
+import content from '@data/site-content.json';
+
+const explorations = content.explorations;
 ---
 
 <section id="explorations" class="border-t border-[#cbd8dd] bg-[#edf3f5] px-4 py-20 text-[#101827] sm:px-6 lg:py-28">
   <div class="mx-auto max-w-6xl">
     <div class="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]">
-      <p class="font-mono text-xs uppercase tracking-[0.22em] text-[#55717d]">En exploration</p>
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-[#55717d]">{explorations.eyebrow}</p>
       <div>
-        <h2 class="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl">Ce que j’apprends avant que cela devienne évident.</h2>
-        <p class="mt-5 max-w-2xl text-base leading-7 text-[#52616b]">Je réserve une partie de mon temps à l’expérimentation, aux prototypes et à la compréhension des nouvelles limites de la plateforme.</p>
+        <h2 class="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.04em] sm:text-5xl">{explorations.title}</h2>
+        <p class="mt-5 max-w-2xl text-base leading-7 text-[#52616b]">{explorations.description}</p>
       </div>
     </div>
 
@@ -24,8 +27,8 @@ import { withBase } from '@utils/routes';
     </div>
 
     <div class="mt-10 flex flex-col gap-4 border-t border-[#cbd8dd] pt-7 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-sm text-[#52616b]">Les prototypes, essais et apprentissages sont documentés dans le Lab.</p>
-      <a href={withBase('/lab')} class="shrink-0 border-b border-[#55717d]/40 pb-1 text-sm font-medium text-[#55717d]">Explorer le Lab ↗</a>
+      <p class="text-sm text-[#52616b]">{explorations.footer}</p>
+      <a href={withBase('/lab')} class="shrink-0 border-b border-[#55717d]/40 pb-1 text-sm font-medium text-[#55717d]">{explorations.cta} ↗</a>
     </div>
   </div>
 </section>
