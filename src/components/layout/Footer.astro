@@ -3,25 +3,25 @@ import { Github, Linkedin, Mail, Download, Scale3D } from 'lucide-react';
 import { withBase } from '@utils/routes';
 ---
 
-<footer class="border-t border-border bg-background">
+<footer class="border-t border-[#cbd8dd] bg-[#edf3f5] text-[#101827]">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
     <!-- Main Footer Content -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
       <!-- Brand -->
       <div class="space-y-4">
         <h3 class="font-semibold text-lg">Louis Forget</h3>
-        <p class="text-sm text-muted-foreground">Cloud Engineer • Platform Engineer • SRE</p>
-        <p class="text-xs text-muted-foreground">Passionné par l'infrastructure, l'automatisation et la qualité logicielle.</p>
+        <p class="text-sm text-[#52616b]">Cloud Engineer • Platform Engineer • SRE</p>
+        <p class="text-xs text-[#71858f]">Passionné par l'infrastructure, l'automatisation et la qualité logicielle.</p>
       </div>
 
       <!-- Quick Links -->
       <div class="space-y-4">
         <h4 class="font-semibold text-sm">Navigation</h4>
         <nav class="flex flex-col gap-2">
-          <a href={withBase('/')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">Accueil</a>
-          <a href={withBase('/moi')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">Moi</a>
-          <a href={withBase('/lab')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">Lab</a>
-          <a href={withBase('/#experience')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">Expérience</a>
+          <a href={withBase('/')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Accueil</a>
+          <a href={withBase('/moi')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Moi</a>
+          <a href={withBase('/lab')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Lab</a>
+          <a href={withBase('/#experience')} class="text-sm text-[#52616b] hover:text-[#101827] transition-colors">Expérience</a>
         </nav>
       </div>
 
@@ -44,7 +44,7 @@ import { withBase } from '@utils/routes';
       <!-- Download CV -->
       <div class="space-y-4">
         <h4 class="font-semibold text-sm">Documents</h4>
-        <a href={withBase('/cv.pdf')} download class="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 rounded-md text-sm font-medium transition-colors">
+        <a href={withBase('/cv.pdf')} download class="inline-flex items-center gap-2 px-4 py-2 border border-[#cbd8dd] bg-white hover:bg-[#f7fafb] rounded-md text-sm font-medium transition-colors">
           <Download size={16} />
           Télécharger CV
         </a>
@@ -52,10 +52,10 @@ import { withBase } from '@utils/routes';
     </div>
 
     <!-- Divider -->
-    <div class="border-t border-border my-8"></div>
+    <div class="border-t border-[#cbd8dd] my-8"></div>
 
     <!-- Bottom Section -->
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-[#71858f]">
       <div class="flex items-center gap-2">
         <span>© 2024 Louis Forget</span>
         <span>•</span>

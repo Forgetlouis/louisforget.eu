@@ -17,13 +17,13 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') || '/';
 ---
 
-<nav class="fixed top-0 z-50 w-full border-b border-white/[0.07] bg-[#09111f]/85 backdrop-blur-xl" id="navbar">
+<nav class="fixed top-0 z-50 w-full border-b border-[#cbd8dd] bg-[#edf3f5]/90 backdrop-blur-xl text-[#101827]" id="navbar">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href={withBase('/')} class="group flex items-center gap-3 font-mono text-sm font-medium tracking-tight transition-opacity hover:opacity-70">
-        <span class="grid h-8 w-8 place-items-center rounded-full border border-white/[0.12] text-xs text-teal-300">LF</span>
-        <span class="hidden text-white sm:inline">Louis Forget</span>
+        <span class="grid h-8 w-8 place-items-center rounded-full border border-[#b7c7cd] text-xs text-[#55717d]">LF</span>
+        <span class="hidden text-[#101827] sm:inline">Louis Forget</span>
       </a>
 
       <!-- Desktop Menu -->
@@ -36,8 +36,8 @@ const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') 
                 href={withBase(item.href)}
                 class={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive
-                    ? 'bg-muted text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'bg-white text-[#101827] shadow-sm'
+                    : 'text-[#71858f] hover:text-[#101827]'
                 }`}
               >
                 {item.label}
@@ -55,7 +55,7 @@ const currentPath = Astro.url.pathname.replace(basePath, '').replace(/\/$/, '') 
   </div>
 
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-background">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[#cbd8dd] bg-[#edf3f5]">
     <div class="px-4 py-4 space-y-2">
       {
         navItems.map((item) => {

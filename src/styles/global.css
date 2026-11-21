@@ -13,20 +13,20 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-foreground: 0 0% 98%;
-      --color-background: 0 0% 3%;
-      --color-muted: 0 0% 14%;
-      --color-muted-foreground: 0 0% 63%;
-      --color-border: 0 0% 14%;
+      --color-foreground: 220 28% 10%;
+      --color-background: 190 20% 94%;
+      --color-muted: 190 18% 88%;
+      --color-muted-foreground: 205 12% 42%;
+      --color-border: 196 18% 82%;
     }
   }
 
   html.dark {
-    --color-foreground: 0 0% 98%;
-    --color-background: 0 0% 3%;
-    --color-muted: 0 0% 14%;
-    --color-muted-foreground: 0 0% 63%;
-    --color-border: 0 0% 14%;
+    --color-foreground: 220 28% 10%;
+    --color-background: 190 20% 94%;
+    --color-muted: 190 18% 88%;
+    --color-muted-foreground: 205 12% 42%;
+    --color-border: 196 18% 82%;
   }
 }
 

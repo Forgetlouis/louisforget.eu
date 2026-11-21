@@ -6,25 +6,25 @@ import { getIconComponent } from '@utils/icons';
 type IconName = 'Briefcase' | 'Code' | 'Zap' | 'Award' | 'Bike' | 'Mountain';
 ---
 
-<section id="statistics" class="border-t border-white/[0.08] bg-[#0c1628] px-4 py-20 text-white sm:px-6 lg:py-24">
+<section id="statistics" class="border-t border-[#cbd8dd] bg-[#edf3f5] px-4 py-20 text-[#101827] sm:px-6 lg:py-24">
   <div class="mx-auto max-w-6xl">
     <div class="mb-10 grid gap-4 md:grid-cols-[0.7fr_1.3fr] md:items-end">
-      <p class="font-mono text-xs uppercase tracking-[0.22em] text-cyan-300">Quelques chiffres</p>
-      <p class="max-w-xl text-sm leading-6 text-slate-400 md:text-right md:justify-self-end">Des repères place holders, prêts à évoluer avec votre parcours réel.</p>
+      <p class="font-mono text-xs uppercase tracking-[0.22em] text-[#55717d]">Quelques chiffres</p>
+      <p class="max-w-xl text-sm leading-6 text-[#71858f] md:text-right md:justify-self-end">Des repères place holders, prêts à évoluer avec votre parcours réel.</p>
     </div>
 
-    <div class="grid border-l border-t border-white/[0.10] sm:grid-cols-2 lg:grid-cols-6">
+    <div class="grid border-l border-t border-[#cbd8dd] sm:grid-cols-2 lg:grid-cols-6">
       {statisticsData.map((stat, index) => {
         const Icon = getIconComponent(stat.icon as IconName);
         return (
-          <article class="min-h-44 border-b border-r border-white/[0.10] p-5 transition-colors hover:bg-white/[0.035]">
+          <article class="min-h-44 border-b border-r border-[#cbd8dd] bg-white p-5 transition-colors hover:bg-[#f7fafb]">
             <div class="flex items-start justify-between">
-              <Icon size={18} strokeWidth={1.5} className={index % 2 === 0 ? 'text-cyan-300' : 'text-indigo-300'} />
-              <span class="font-mono text-[10px] text-slate-500">0{index + 1}</span>
+              <Icon size={18} strokeWidth={1.5} className={index % 2 === 0 ? 'text-[#4c8a88]' : 'text-indigo-500'} />
+              <span class="font-mono text-[10px] text-[#71858f]">0{index + 1}</span>
             </div>
             <div class="mt-10">
-              <p class="text-3xl font-semibold tracking-tight"><span class="count-value">{stat.value}</span><span class="ml-1 text-lg text-slate-400">{stat.suffix}</span></p>
-              <p class="mt-2 text-xs leading-5 text-slate-400">{stat.label}</p>
+              <p class="text-3xl font-semibold tracking-tight"><span class="count-value">{stat.value}</span><span class="ml-1 text-lg text-[#71858f]">{stat.suffix}</span></p>
+              <p class="mt-2 text-xs leading-5 text-[#52616b]">{stat.label}</p>
             </div>
           </article>
         );
